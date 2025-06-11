@@ -17,8 +17,9 @@ function Index() {
         - someone please hire me so I can leave this city peacefuly.
       </p>
       <p className='mb-2'>
-        I'm trying to do something, but I don't know it yet, please someone tell
-        me to do.
+        I'm trying to do something, but I don't know it yet, someone please
+        <a href='mailto:ahmadalbaihaqi69@gmail.com'> tell </a>
+        me what to do.
       </p>
     </>
   )
