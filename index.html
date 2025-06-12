@@ -20,5 +20,42 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js'
+      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js'
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: 'AIzaSyBc601C2uQqekptBesEut2fZ-2W3EMHBFc',
+        authDomain: 'albae69-b9ceb.firebaseapp.com',
+        projectId: 'albae69-b9ceb',
+        storageBucket: 'albae69-b9ceb.firebasestorage.app',
+        messagingSenderId: '700464566930',
+        appId: '1:700464566930:web:5da7e8be0e994a76258c4b',
+        measurementId: 'G-1VMJE2L11H',
+      }
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig)
+      const analytics = getAnalytics(app)
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-C0NZC8VWH3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+
+      gtag('config', 'G-C0NZC8VWH3')
+    </script>
   </body>
 </html>
