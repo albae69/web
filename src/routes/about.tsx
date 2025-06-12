@@ -4,7 +4,7 @@ export const Route = createFileRoute({
 
 function About() {
   return (
-    <div className='p-2'>
+    <div className='my-4'>
       <p>
         emm..., still figure it out, just check my{' '}
         <a
