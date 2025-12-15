@@ -1,5 +1,14 @@
 import HelloWorld from './hello_word.mdx'
+import Summary from './summary.mdx'
 
-export const POSTS = [{ title: 'Hello World!', url: 'hello_world' }]
+type Post = {
+  title: string
+  url: string
+}
 
-export { HelloWorld }
+export const POSTS: Post[] = [
+  { title: 'Hello World!', url: 'hello_world' },
+  { title: 'Summary', url: 'summary' },
+]
+
+export { HelloWorld, Summary }

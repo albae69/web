@@ -6,15 +6,26 @@ function About() {
   return (
     <div className='my-4'>
       <p>
-        emm..., still figure it out, just check my{' '}
+        Still figuring things out — feel free to check my{' '}
         <a
-          href='http://github.com/albae69'
+          href='https://github.com/albae69'
           target='_blank'
           rel='noopener noreferrer'
+          className='underline'
         >
-          guthib
-        </a>{' '}
-        - even there's nothing to see
+          GitHub
+        </a>
+        , though there’s not much to see (yet).
+      </p>
+      <p className='mt-2'>
+        If you need extra help or a freelance dev, just{' '}
+        <a
+          href='mailto:ahmadalbaihaqi69@gmail.com'
+          target='_blank'
+          rel='noreferrer'
+        >
+          reach out 😀
+        </a>
       </p>
     </div>
   )

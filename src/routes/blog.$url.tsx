@@ -1,6 +1,6 @@
 import type { ClassAttributes, HTMLAttributes } from 'react'
 import type { JSX } from 'react/jsx-runtime'
-import { HelloWorld } from '../posts'
+import { HelloWorld, Summary } from '../posts'
 
 export const Route = createFileRoute({
   component: PostComponent,
@@ -24,11 +24,13 @@ const components = {
   },
 }
 
+// why i am doing this? idk
 function render(url: string) {
   switch (url) {
     case 'hello_world':
       return <HelloWorld components={components} />
-
+    case 'summary':
+      return <Summary components={components} />
     default:
       return null
   }
