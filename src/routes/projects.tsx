@@ -2,58 +2,190 @@ export const Route = createFileRoute({
   component: Projects,
 })
 
+const projects = [
+  {
+    name: 'EMR System — Hospital Information',
+    url: '#',
+    tech: ['Flutter', 'React', 'Go', 'MySQL'],
+    points: [
+      'Electronic Medical Record system used by 50+ medical staff across multiple hospitals',
+      'Desktop & Android app for real-time patient data entry (Flutter)',
+      'Web app for BPJS & Insurance claim reports — processing time from 2 days to <2 hours',
+      'RESTful API with Go + Fiber handling 1,000+ daily transactions',
+    ],
+  },
+  {
+    name: 'Auto Invoice Sync — Australian Client',
+    url: '#',
+    tech: [
+      'React',
+      'Go',
+      'Docker',
+      'AWS Textract',
+      'AWS S3',
+      'AWS AppRunner',
+      'AWS EC2',
+      'SQl Server',
+    ],
+    points: [
+      'Built an automated invoice data extraction pipeline for an Australian client',
+      'Integrated with their POS system for auto invoice sync',
+      'Leveraged AWS Textract to extract invoice data with 95% accuracy',
+      'Reduced manual data entry effort by 80%',
+      'Processed documents stored securely on AWS S3',
+      'Containerized deployment via Amazon ECR & AWS AppRunner',
+    ],
+  },
+  {
+    name: 'WhatsApp Broadcast App',
+    url: '#',
+    tech: ['React', 'Bun'],
+    points: [
+      'Built a web application for WhatsApp broadcast messaging to customers',
+      'Developed contact management and audience segmentation features',
+      'Integrated WhatsApp Business API for message delivery and tracking',
+    ],
+  },
+  {
+    name: 'Shieldtag — Company Landing Page',
+    url: 'https://shieldtag.co',
+    tech: ['Next.js', 'Strapi', 'REST API'],
+    points: [
+      'Migrated legacy WIX site to Next.js + Strapi headless CMS',
+      'Improved Largest Contentful Paint (LCP) by 40%',
+      'Dynamic meta tags, structured data & Open Graph across 20+ pages',
+      'Boosted organic search traffic by 25% within 3 months',
+      'Integrated Facebook Pixel & Google Ads — conversion rate up 15%',
+    ],
+  },
+  {
+    name: 'DEX Crypto Trading App',
+    url: '#',
+    tech: ['React Native'],
+    points: [
+      'Version 2 of a DEX crypto mobile trading application',
+      'Real-time price charts and order books',
+      'Served 500+ active traders',
+      'Published on Apple App Store & Google Play Store',
+    ],
+  },
+  {
+    name: 'Siloam Private Hospital — Web App',
+    url: '#',
+    tech: ['React/Next.js'],
+    points: [
+      'Built a web application for Siloam Private Hospital using React.js',
+      'Secure and accurate data integration with backend hospital systems',
+    ],
+  },
+  {
+    name: 'Hokben Mobile Apps',
+    url: 'https://play.google.com/store/apps/details?id=id.co.hokben.revamp&hl=id&pli=1',
+    tech: ['React Native'],
+    points: [
+      'Revamped UI/UX and updated framework — Play Store rating 3.8 to 4.6',
+      'Integrated multi-method payment gateways (QRIS, VA, E-Wallet)',
+      'Boosted monthly transaction volume by 35%',
+      '100+ daily transactions with 98% success rate',
+    ],
+  },
+  {
+    name: 'BUMA Superapps — Driver Behavior',
+    url: '#',
+    tech: ['React Native'],
+    points: [
+      'Developed Driver Behavior analytics module for BUMA superapps',
+      'Leveraged GPS and accelerometer data to monitor driving patterns',
+      'Deployed across 1,000+ active drivers',
+    ],
+  },
+  {
+    name: 'SMART PLN — Mobile Application',
+    url: '#',
+    tech: ['React Native'],
+    points: [
+      'Built and deployed SMART PLN mobile application for electrical infrastructure monitoring',
+      'Adopted by 200+ field technicians nationwide',
+      'Maintained compliance before each Play Store release',
+    ],
+  },
+]
+
 function Projects() {
   return (
-    <div className='p-2'>
-      <ul className='space-y-2'>
-        <li className='italic'>
-          <a href='https://shieldtag.co' target='_blank' rel='noreferrer'>
-            Shieldtag
-          </a>{' '}
-          <br />
-          <p>Next.js, Strapi, REST API</p>
-          <p>
-            - Developed a full-stack web application using Next.js and Strapi
-            CMS
-          </p>
-          <p>
-            - Implemented dynamic content management, API integration, and
-            responsive UI
-          </p>
-          <p>- Focused on performance, SEO, and maintainable code structure</p>
-        </li>
-        <li className='italic'>
-          <a
-            href='https://play.google.com/store/apps/details?id=id.co.hokben.revamp&hl=id&pli=1'
-            target='_blank'
-            rel='noreferrer'
-          >
-            Hokben Mobile Apps
-          </a>{' '}
-          <p>
-            - Contributed to the development and maintenance of a production
-            mobile application
-          </p>
-          <p>
-            - Implemented new UI designs based on Figma (homepage, menu,
-            rewards, news)
-          </p>
-          <p>
-            - Fixed bugs and enhanced existing features to improve user
-            experience
-          </p>
-          <p>
-            -Collaborated with designers and developers in an active production
-            environment
-          </p>
-        </li>
-      </ul>
-      <p className='my-2'>
-        These are my most notable projects. I’ve also contributed through bug
-        fixes and converting Figma designs into React and React Native
-        implementations. My current stack includes React, Flutter, and Golang
-        for backend.
+    <section className='py-8'>
+      <span className='section-prefix mb-2 block animate-fade-in'>
+        // projects
+      </span>
+      <h2 className='text-3xl font-bold text-black mb-2 animate-fade-in-up delay-1'>
+        Project Portfolio
+      </h2>
+      <p className='text-sm text-zinc-500 mb-6 animate-fade-in-up delay-2'>
+        Projects completed over 6+years
       </p>
-    </div>
+
+      <div className='grid gap-5'>
+        {projects.map((project, index) => (
+          <div
+            key={project.name}
+            className={`glass rounded-xl p-5 border border-black/5 glass-hover animate-fade-in-up delay-${Math.min(index + 3, 6)}`}
+          >
+            <div className='flex items-start justify-between mb-3'>
+              <h3 className='font-bold text-lg text-black'>{project.name}</h3>
+              {project.url !== '#' && (
+                <a
+                  href={project.url}
+                  target='_blank'
+                  rel='noreferrer'
+                  className='text-emerald-500 hover:text-emerald-600 transition-colors'
+                  title='Open link'
+                >
+                  <svg
+                    className='w-5 h-5'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  >
+                    <path d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6' />
+                    <polyline points='15 3 21 3 21 9' />
+                    <line x1='10' y1='14' x2='21' y2='3' />
+                  </svg>
+                </a>
+              )}
+            </div>
+
+            {/* Tech tags */}
+            <div className='flex flex-wrap gap-1.5 mb-3'>
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  className='px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded-md text-xs font-mono'
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Points */}
+            <ul className='space-y-1'>
+              {project.points.map((point, i) => (
+                <li
+                  key={i}
+                  className='text-sm text-zinc-600 flex items-start gap-2'
+                >
+                  <span className='text-emerald-300 mt-0.5 shrink-0'>
+                    &#8594;
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }

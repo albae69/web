@@ -1,32 +1,295 @@
+import { Link } from '@tanstack/react-router'
+
 export const Route = createFileRoute({
   component: About,
 })
 
+const skills = [
+  {
+    category: 'Frontend Web',
+    items: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3'],
+  },
+  {
+    category: 'Backend & API',
+    items: ['Go (Fiber)', 'Node.js', 'Express.js', 'Strapi CMS', 'REST API'],
+  },
+  { category: 'Mobile & Desktop', items: ['React Native', 'Flutter'] },
+  {
+    category: 'Database',
+    items: [
+      'PostgreSQL',
+      'MySQL',
+      'SQL Server',
+      'Firebase Firestore',
+      'Supabase',
+      'SQL',
+    ],
+  },
+  {
+    category: 'Cloud & AWS',
+    items: ['Amazon S3', 'Amazon ECR', 'AWS AppRunner', 'AWS Textract'],
+  },
+  { category: 'Tools', items: ['Git', 'Docker', 'Jira', 'Postman', 'Figma'] },
+  {
+    category: 'AI & LLMs',
+    items: ['GitHub Copilot', 'DeepSeek', 'ChatGPT', 'Claude', 'Cursor'],
+  },
+]
+
+const experiences = [
+  {
+    role: 'Fullstack Developer',
+    company: 'Freelance / IT Consulting Vendor',
+    period: 'Aug 2024 — Present',
+    highlight: 'Hospital Information Systems',
+    points: [
+      'EMR system used by 50+ medical staff across multiple hospitals (Flutter + React + Go)',
+      'Automated BPJS & Insurance claim reports — from 2 days to <2 hours',
+    ],
+  },
+
+  {
+    role: 'Frontend Developer',
+    company: 'Shieldtag',
+    period: 'Nov 2023 — Jun 2024',
+    highlight: 'Landing Page',
+    points: [
+      'Migrated WIX to Next.js + Strapi — 40% LCP improvement',
+      'SEO boost: 25% organic traffic increase in 3 months',
+      '90+ Lighthouse score on desktop & mobile',
+    ],
+  },
+  {
+    role: 'Mobile Developer',
+    company: 'PT. Merkle Inovasi Teknologi',
+    period: 'Oct 2022 — May 2023',
+    highlight: 'Fintech & Healthcare',
+    points: [
+      'DEX crypto trading app (React Native) — 500+ active traders',
+      'Web app for Siloam Private Hospital (React.js)',
+    ],
+  },
+  {
+    role: 'Mobile Developer',
+    company: 'PT. Wiratek Solusi Asia',
+    period: 'Nov 2021 — Aug 2022',
+    highlight: 'E-Commerce & Logistics',
+    points: [
+      'Hokben mobile app — Play Store rating 3.8 -> 4.6',
+      'Payment gateway integration — 35% transaction increase',
+      'BUMA Driver Behavior module — 1,000+ active drivers',
+    ],
+  },
+]
+
 function About() {
   return (
-    <div className='my-4'>
-      <p>
-        Still figuring things out — feel free to check my{' '}
-        <a
-          href='https://github.com/albae69'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='underline'
-        >
-          GitHub
-        </a>
-        , though there’s not much to see (yet).
-      </p>
-      <p className='mt-2'>
-        If you need extra help or a freelance dev, just{' '}
-        <a
-          href='mailto:ahmadalbaihaqi69@gmail.com'
-          target='_blank'
-          rel='noreferrer'
-        >
-          reach out 😀
-        </a>
-      </p>
-    </div>
+    <section className='py-8 space-y-8'>
+      {/* HEADER */}
+      <div>
+        <span className='section-prefix mb-2 block'>// about</span>
+        <h2 className='text-3xl font-bold text-black'>Ahmad Albaihaqi Lubis</h2>
+        <p className='text-zinc-500 mt-1'>
+          Software Engineer — Medan, Indonesia
+        </p>
+      </div>
+
+      {/* PROFESSIONAL SUMMARY */}
+      <div className='glass rounded-xl p-6 border border-black/5 animate-fade-in-up delay-1'>
+        <span className='font-mono text-xs text-emerald-400 block mb-3'>
+          // professional_summary
+        </span>
+        <p className='text-zinc-600 leading-relaxed'>
+          <strong className='text-zinc-900'>Software Engineer</strong> with 6+
+          years of experience in full-stack web, mobile, and desktop
+          development. Worked across{' '}
+          <strong className='text-zinc-900'>healthcare</strong> (EMR systems,
+          BPJS/Insurance claims),{' '}
+          <strong className='text-zinc-900'>fintech</strong> (crypto trading,
+          payment gateways)
+        </p>
+      </div>
+
+      {/* SKILLS */}
+      <div className='glass rounded-xl p-6 border border-black/5 animate-fade-in-up delay-2'>
+        <span className='font-mono text-xs text-emerald-400 block mb-4'>
+          // skills
+        </span>
+        <div className='grid gap-5 sm:grid-cols-2'>
+          {skills.map((group) => (
+            <div key={group.category}>
+              <h4 className='text-sm font-semibold text-black mb-2'>
+                {group.category}
+              </h4>
+              <div className='flex flex-wrap gap-1.5'>
+                {group.items.map((skill) => (
+                  <span
+                    key={skill}
+                    className='px-2.5 py-1 bg-zinc-100 text-zinc-700 rounded-lg text-xs font-mono'
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* EXPERIENCE TIMELINE */}
+      <div className='glass rounded-xl p-6 border border-black/5 animate-fade-in-up delay-3'>
+        <span className='font-mono text-xs text-emerald-400 block mb-4'>
+          // experience
+        </span>
+        <div className='space-y-6'>
+          {experiences.map((exp, idx) => (
+            <div key={idx} className='relative pl-5 border-l-2 border-zinc-200'>
+              <div className='absolute left-[-5px] top-1 w-2 h-2 rounded-full bg-emerald-400' />
+              <div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1'>
+                <div>
+                  <h3 className='font-semibold text-black text-sm'>
+                    {exp.role}
+                  </h3>
+                  <p className='text-xs text-zinc-500'>{exp.company}</p>
+                </div>
+                <span className='text-xs font-mono text-emerald-500 shrink-0'>
+                  {exp.period}
+                </span>
+              </div>
+              <p className='text-xs text-emerald-400 font-mono mb-1'>
+                // {exp.highlight}
+              </p>
+              <ul className='space-y-0.5'>
+                {exp.points.map((pt, i) => (
+                  <li
+                    key={i}
+                    className='text-xs text-zinc-600 flex items-start gap-1.5'
+                  >
+                    <span className='text-emerald-300 mt-0.5'>&#8594;</span>
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CONTACT & EDUCATION */}
+      <div className='grid gap-5 sm:grid-cols-2'>
+        {/* Contact */}
+        <div className='glass rounded-xl p-6 border border-black/5 animate-fade-in-up delay-4'>
+          <span className='font-mono text-xs text-emerald-400 block mb-3'>
+            // contact
+          </span>
+          <div className='space-y-3'>
+            <a
+              href='mailto:ahmadalbaihaqi69@gmail.com'
+              className='flex items-center gap-2 text-sm text-zinc-600 hover:text-emerald-500 transition-colors no-underline'
+            >
+              <svg
+                className='w-4 h-4 shrink-0'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                <rect x='2' y='4' width='20' height='16' rx='2' />
+                <path d='M22 4L12 13 2 4' />
+              </svg>
+              ahmadalbaihaqi69@gmail.com
+            </a>
+            <a
+              href='https://github.com/albae69'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex items-center gap-2 text-sm text-zinc-600 hover:text-emerald-500 transition-colors no-underline'
+            >
+              <svg
+                className='w-4 h-4 shrink-0'
+                viewBox='0 0 24 24'
+                fill='currentColor'
+              >
+                <path d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z' />
+              </svg>
+              github.com/albae69
+            </a>
+            <a
+              href='https://linkedin.com/in/albae69'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex items-center gap-2 text-sm text-zinc-600 hover:text-emerald-500 transition-colors no-underline'
+            >
+              <svg
+                className='w-4 h-4 shrink-0'
+                viewBox='0 0 24 24'
+                fill='currentColor'
+              >
+                <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' />
+              </svg>
+              linkedin.com/in/albae69
+            </a>
+            <div className='flex items-center gap-2 text-sm text-zinc-600'>
+              <svg
+                className='w-4 h-4 shrink-0'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z' />
+                <circle cx='12' cy='10' r='3' />
+              </svg>
+              Medan, Sumatera Utara
+            </div>
+          </div>
+        </div>
+
+        {/* Education & Languages */}
+        <div className='glass rounded-xl p-6 border border-black/5 animate-fade-in-up delay-5'>
+          <span className='font-mono text-xs text-emerald-400 block mb-3'>
+            // education
+          </span>
+          <div className='space-y-3 mb-5'>
+            <div>
+              <p className='text-sm font-medium text-black'>
+                Pondok Programmer
+              </p>
+              <p className='text-xs text-zinc-500'>
+                Bootcamp Programming — Frontend Developer (2019–2022)
+              </p>
+            </div>
+            <div>
+              <p className='text-sm font-medium text-black'>
+                SMK Negeri 1 Percut Sei Tuan
+              </p>
+              <p className='text-xs text-zinc-500'>
+                Civil Engineering (2015–2018)
+              </p>
+            </div>
+          </div>
+          <hr className='border-dashed border-zinc-200 my-4' />
+          <span className='font-mono text-xs text-emerald-400 block mb-3'>
+            // languages
+          </span>
+          <div className='space-y-1'>
+            <div className='flex items-center justify-between'>
+              <span className='text-sm text-zinc-700'>Indonesian</span>
+              <span className='text-xs font-mono text-zinc-400'>Native</span>
+            </div>
+            <div className='flex items-center justify-between'>
+              <span className='text-sm text-zinc-700'>English</span>
+              <span className='text-xs font-mono text-zinc-400'>
+                Limited Working
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

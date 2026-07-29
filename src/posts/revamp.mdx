@@ -1,0 +1,122 @@
+<div className="space-y-8">
+
+<h1 className='text-black font-bold text-2xl !mb-2'>
+  Revamping My Personal Website
+</h1>
+
+<span className='font-mono text-xs text-zinc-400'>
+  29 July 2026 · 5 min read
+</span>
+
+---
+
+I recently gave my personal website a complete overhaul. Here's a breakdown of what changed, why, and what I learned along the way.
+
+## The Goal
+
+I wanted something **futuristic yet clean** — a "White Matrix" aesthetic with subtle grid backgrounds, glassmorphism cards, and a cohesive color palette. Something that feels tech-forward but remains readable and professional.
+
+## Stack
+
+Built with:
+
+- **React 19** + **TypeScript**
+- **Vite 6** — fast bundling
+- **TanStack Router** — type-safe routing with auto code-splitting
+- **Tailwind CSS v4** — utility-first styling
+- **MDX** — blog content as Markdown + JSX
+
+## Design System
+
+### Grid Background
+
+The foundation of the futuristic look is a subtle grid overlay:
+
+```css
+body {
+  background-image:
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(0deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+```
+
+### Glassmorphism
+
+Cards and UI elements use a glass effect with `backdrop-filter: blur()` — giving that sleek, modern depth without overwhelming the content.
+
+### Color Palette — Emerald Tech
+
+After experimenting with indigo, I switched to **emerald & teal** accents. The palette feels fresh, professional, and stands out without being aggressive.
+
+| Role            | Color                   |
+| --------------- | ----------------------- |
+| Primary accent  | `#059669` (emerald-600) |
+| Hover state     | `#10B981` (emerald-500) |
+| Card background | White with 60% opacity  |
+
+## Key Changes
+
+### 1. Hero Section (\`/\`)
+
+The home page went from a simple greeting to a full hero section with:
+
+- Decorative `// _index` monospace prefix
+- Glow effect on the name
+- Tech stack snippet card
+- Two clear CTAs: View Projects & Contact Me
+
+### 2. About Page (\`/about\`)
+
+Completely rebuilt with data from my CV:
+
+- Professional summary
+- 6-category skill matrix (Frontend, Backend, Mobile, Database, Cloud, Tools)
+- Experience timeline with 5 companies
+- Contact links (Email, GitHub, LinkedIn)
+- Education & languages section
+
+### 3. Projects (\`/projects\`)
+
+Expanded from 2 projects to **8 real projects** from my career:
+
+- EMR System (Flutter, Go, AWS)
+- DEX Crypto Trading App
+- Hokben Mobile Apps
+- BUMA Driver Behavior module
+- SMART PLN mobile app
+- And more
+
+Each project card has tech stack badges, bullet points, and live links.
+
+### 4. Blog
+
+Upgraded from a plain list to glass card style with numbering, hover effects, and a proper back-navigation on post detail pages.
+
+### 5. Navigation
+
+Sticky glass navbar with:
+
+- Active link indicator
+- Mobile hamburger menu
+- Monospace `// albae69` logo prefix
+
+## Lessons Learned
+
+1. **CSS specificity matters** — the global `a { color }` selector was overriding button text colors. Scoping styles properly saved headaches.
+2. **Tailwind + CSS variables** pair beautifully for theming. Changing from indigo to emerald was as simple as updating a few variables and doing a find-and-replace.
+3. **MDX is great** for content that needs custom React components.
+4. **TanStack Router** auto code-splitting gives performance wins with zero config.
+
+## What's Next?
+
+- Dark mode toggle
+- Page transition animations
+- Better mobile optimizations
+- More blog posts!
+
+---
+
+Thanks for reading. Code is on [GitHub](https://github.com/albae69).
+
+</div>
