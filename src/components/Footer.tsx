@@ -2,7 +2,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className='mt-16 pt-8 pb-12 border-t border-black/5'>
+    <footer className='mt-16 pt-8 pb-12 border-t border-black/5 dark:border-white/10'>
       <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
         {/* Copyright */}
         <span className='font-mono text-xs text-zinc-400'>

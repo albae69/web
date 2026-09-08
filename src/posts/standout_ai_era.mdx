@@ -1,0 +1,381 @@
+<div className="space-y-8">
+
+<h1 className='text-black font-bold'>
+  How to Stand Out as a Software Engineer in the AI Era
+</h1>
+
+<span className='font-mono text-xs text-zinc-400'>
+  September 8, 2026 · 8 min read
+</span>
+
+---
+
+Everyone's worried about AI replacing developers. But here's the truth: AI is replacing developers who don't adapt. The ones who do? They're becoming more valuable than ever.
+
+Here's how to be one of them.
+
+## The AI Reality Check
+
+Let's be honest about what's happening. AI in 2026 can:
+
+- Generate entire features from natural language descriptions
+- Debug and fix complex issues across codebases
+- Write comprehensive tests and documentation
+- Refactor code for better architecture
+
+But AI still can't:
+
+- Understand **why** we're building something
+- Invent creative solutions to novel problems
+- Make judgment calls on trade-offs
+- Feel empathy for user pain points
+- Inspire and lead teams
+
+The gap between these two lists? That's your opportunity.
+
+## Skill One: Become an AI Multiplier
+
+Don't fight AI. Master it.
+
+### The Ten X Developer is Back
+
+The "10x developer" myth used to be about writing 10x more code. Now it's about solving problems 10x faster.
+
+**The new workflow:**
+
+- **Before:** Write code → Test → Debug → Deploy
+- **After:** Describe intent → AI generates → Review → Optimize → Deploy
+
+Same output, 10x less time on boilerplate.
+
+### Practical AI Usage
+
+Instead of writing a validation function from scratch:
+
+```typescript
+function validateEmail(email: string): boolean {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return regex.test(email)
+}
+```
+
+You:
+
+1. Tell AI what you need
+2. Review the output
+3. Add edge cases AI missed
+4. Move to the interesting problems
+
+### The Review Mindset
+
+AI generates code. You review code. This is actually harder than writing.
+
+**Review checklist:**
+
+- Does it handle edge cases?
+- Is it secure?
+- Will it scale?
+- Is it accessible?
+- Can my team maintain it?
+- Does it actually solve the problem?
+
+## Skill Two: Deep Specialization
+
+AI is great at general knowledge. It's terrible at deep expertise.
+
+### Pick Your Niche
+
+Choose one area and go deep:
+
+- **Performance** — Make apps blazingly fast
+- **Accessibility** — Make apps work for everyone
+- **Security** — Keep apps safe from attacks
+- **Architecture** — Design systems that scale
+- **Developer Experience** — Make other developers productive
+
+### Why Depth Wins
+
+AI can generate a React component. But it can't:
+
+- Optimize render cycles for 60fps
+- Implement complex animation choreography
+- Debug memory leaks in production
+- Design a component API that scales
+
+That requires deep, specialized knowledge.
+
+### The T-Shaped Developer
+
+```
+Broad knowledge (AI handles the rest)
+     ─────────────────────────────────
+                │
+                │ Deep expertise
+                │ (Your value)
+                │
+                ▼
+```
+
+Be broad enough to understand the system, deep enough to solve the hard problems.
+
+## Skill Three: Problem Discovery
+
+AI solves problems. Humans discover problems.
+
+### The Value of "Why"
+
+AI can build "a user dashboard with charts." But AI can't ask:
+
+- Do users actually need charts?
+- What decisions are they making?
+- What's the real pain point?
+
+### Product Thinking
+
+| Role | Responsibility |
+|------|----------------|
+| AI | Build the feature |
+| You | Solve the user problem |
+| AI | Implement the solution |
+| You | Decide whether to build it |
+
+### The 5 Whys Technique
+
+**Problem:** Users are abandoning cart
+
+1. Why? The checkout is confusing
+2. Why? Too many steps
+3. Why? We ask for unnecessary info
+4. Why? We never questioned the form
+5. Why? We assumed we knew what users wanted
+
+**Solution:** Reduce form to essentials. AI can implement it, but you need to discover it.
+
+## Skill Four: System Thinking
+
+AI thinks in functions. Humans think in systems.
+
+### Architecture Decisions
+
+AI can implement "use Redis for caching." But you need to decide:
+
+- What to cache?
+- How long to cache?
+- When to invalidate?
+- What happens when cache fails?
+- How does this affect data consistency?
+
+### The Bigger Picture
+
+System thinking means understanding:
+
+- How pieces fit together
+- How information moves
+- What can go wrong
+- What we're optimizing for
+- What limits us
+
+### Real-World Example
+
+**Simple request:** "Add user authentication"
+
+AI implements: Login form, JWT tokens, session management.
+
+You design:
+
+- How does this integrate with existing permissions?
+- What about password recovery?
+- How do we handle session conflicts?
+- What's the token refresh strategy?
+- How does this affect performance?
+- What are the security implications?
+
+## Skill Five: Communication
+
+Code is a small part of the job. Communication is the rest.
+
+### Technical Communication
+
+**Bad:** "The API is slow"
+
+**Good:** "The /users endpoint has p99 latency of 2.3s, primarily due to N+1 queries in the dashboard. Proposing to add eager loading and caching layer, which should reduce to under 200ms."
+
+### Translating Business to Technical
+
+**Business:** "We need it faster"
+
+**You:** "The current implementation loads all data upfront. I'll implement lazy loading and pagination, which should improve initial load by 60%."
+
+**Business:** "Users are confused"
+
+**You:** "The analytics show 40% drop-off at step 3. I'll simplify the form and add progress indicators."
+
+### Documentation as Communication
+
+AI writes docs that describe what the code does. You write docs that explain:
+
+- Why we made these decisions
+- What tradeoffs we considered
+- What we'd do differently next time
+- How to extend this in the future
+
+## Skill Six: Building in Public
+
+Visibility is a skill. Use it.
+
+### Share Your Journey
+
+- **Write:** Blog posts about what you learn
+- **Share:** Open source your side projects
+- **Teach:** Give talks or write tutorials
+- **Mentor:** Help junior developers
+
+### The Compound Effect
+
+- **Month 1:** Write a blog post about React hooks
+- **Month 3:** Someone references your post
+- **Month 6:** You're invited to speak at a meetup
+- **Month 9:** A company reaches out with an opportunity
+- **Year 1:** You're known as "the hooks expert"
+
+### Show Your Work
+
+Don't just show the final product. Show:
+
+- The problems you faced
+- How you solved them
+- What you learned
+- What you'd do differently
+
+## Skill Seven: Soft Skills
+
+The hard skills get you hired. The soft skills get you promoted.
+
+### Empathy
+
+**Understanding users:**
+
+- What are they trying to accomplish?
+- What's frustrating them?
+- What would make their life better?
+
+**Understanding teammates:**
+
+- What challenges are they facing?
+- How can I help?
+- What do they need from me?
+
+### Leadership
+
+Good leaders:
+
+- Make the right technical decisions
+- Help others make right decisions
+- See where the team needs to go
+- Get everyone there together
+
+### Collaboration
+
+AI can't:
+
+- Resolve disagreements between engineers
+- Mentor a junior developer
+- Present to stakeholders
+- Navigate organizational politics
+- Build consensus on technical decisions
+
+## Skill Eight: Continuous Learning
+
+The only constant is change. Embrace it.
+
+### Learning Strategy
+
+| Frequency | Action |
+|-----------|--------|
+| Daily | Read one technical article |
+| Weekly | Try one new tool or technique |
+| Monthly | Complete one side project |
+| Quarterly | Attend one conference or workshop |
+| Yearly | Learn one new technology deeply |
+
+### Filter the Noise
+
+Not everything is worth learning. Ask:
+
+- Does this solve a problem I have?
+- Is this becoming mainstream?
+- Does this deepen my expertise?
+- Will this matter in 2 years?
+
+### The 80/20 Rule
+
+80% of results come from 20% of knowledge. Focus on:
+
+- **Fundamentals** — They rarely change
+- **Patterns** — They transfer across technologies
+- **Principles** — They're timeless
+- **Tools** — They come and go
+
+## The Mindset Shift
+
+### From Producer to Curator
+
+- **Old mindset:** I produce code
+- **New mindset:** I curate solutions
+
+AI produces options. You curate the best one. You add context, judgment, and wisdom.
+
+### From Individual to Team
+
+- **Old mindset:** My code, my success
+- **New mindset:** Our code, our success
+
+AI makes individual developers more productive. But complex problems still need teams. Your ability to work with others matters more.
+
+### From Certainty to Adaptability
+
+- **Old mindset:** I know the right answer
+- **New mindset:** I know how to find the right answer
+
+The landscape changes too fast. Being right matters less than being adaptable.
+
+## Your Action Plan
+
+### This Week
+
+- Try one AI coding tool seriously
+- Write down what it can and can't do well
+- Identify your current niche or pick one
+
+### This Month
+
+- Write one blog post about something you learned
+- Contribute to one open source project
+- Have one coffee chat with someone outside your team
+
+### This Quarter
+
+- Complete one deep-dive project in your niche
+- Give one talk or workshop
+- Build a public portfolio of your expertise
+
+## Conclusion
+
+The AI era isn't threatening software engineers. It's threatening software engineers who only write code.
+
+The engineers who will thrive are those who:
+
+- **Use AI as a multiplier**, not a competitor
+- **Specialize deeply** in areas AI can't reach
+- **Think in systems**, not just functions
+- **Communicate clearly** with humans
+- **Build in public** to establish reputation
+- **Never stop learning** and adapting
+
+AI is the most powerful tool we've ever had. The question isn't whether it will replace you. It's whether you'll use it to become irreplaceable.
+
+---
+
+What's your strategy for standing out in the AI era? Drop me an email at ahmadalbaihaqi69@gmail.com or find me on [GitHub](https://github.com/albae69).
+
+</div>

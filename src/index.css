@@ -20,6 +20,22 @@
   --grid-color: rgba(5, 150, 105, 0.06);
 }
 
+.dark {
+  --background-color: #0a0a0b;
+  --heading-color: #fafafa;
+  --text-color: #a1a1aa;
+  --text-muted: #71717a;
+  --link-color: #10b981;
+  --link-hover: #34d399;
+  --link-visited: #059669;
+  --code-background-color: #18181b;
+  --code-color: #f0fdf4;
+  --blockquote-color: #fafafa;
+  --card-bg: rgba(24, 24, 27, 0.6);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --grid-color: rgba(5, 150, 105, 0.08);
+}
+
 body {
   font-family: var(--font-main);
   font-size: var(--font-scale);
@@ -39,6 +55,7 @@ body {
   line-height: 1.5;
   color: var(--text-color);
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Glass utility */
@@ -47,6 +64,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--card-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-hover {
@@ -56,6 +74,10 @@ body {
   background: rgba(255, 255, 255, 0.9);
   border-color: rgba(5, 150, 105, 0.3) !important;
   box-shadow: 0 4px 20px rgba(5, 150, 105, 0.12);
+}
+.dark .glass-hover:hover {
+  background: rgba(24, 24, 27, 0.9);
+  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.2);
 }
 
 /* Section decorative prefix */
@@ -74,6 +96,7 @@ h5,
 h6 {
   font-family: var(--font-main);
   color: var(--heading-color);
+  transition: color 0.3s ease;
 }
 
 a {
@@ -172,6 +195,45 @@ img {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(5, 150, 105, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(5, 150, 105, 0.4);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.5s ease both;
 }
@@ -182,6 +244,25 @@ img {
 
 .animate-scale-in {
   animation: scaleIn 0.4s ease both;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
 }
 
 /* Staggered delays */
@@ -202,4 +283,64 @@ img {
 }
 .delay-6 {
   animation-delay: 0.6s;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide default cursor globally on desktop only */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Card tilt effect */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.tilt-card:hover {
+  transform: rotateX(2deg) rotateY(2deg);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #059669, #10b981, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism hover effect */
+.glass-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Interactive hover underline */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #059669;
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
 }

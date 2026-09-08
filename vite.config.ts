@@ -6,6 +6,7 @@ import mdx from '@mdx-js/rollup'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [
     { enforce: 'pre', ...mdx() },
     tanstackRouter({
