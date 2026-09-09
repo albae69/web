@@ -4,6 +4,7 @@ import type { JSX } from 'react/jsx-runtime'
 import { Highlight, themes } from 'prism-react-renderer'
 import { POSTS, formatDate, getPostComponent } from '../posts'
 import ScrollReveal from '../components/ScrollReveal'
+import { Squiggle, StarDoodle } from '../components/Doodle'
 import { useTheme } from '../hooks/useTheme'
 
 export const Route = createFileRoute({
@@ -178,6 +179,10 @@ function PostComponent() {
       {/* Post Footer */}
       <ScrollReveal direction='up' delay={300}>
         <div className='mt-8 pt-6 border-t border-black/5 dark:border-white/10'>
+          <div className='flex items-center justify-center mb-4 text-zinc-300 dark:text-zinc-600'>
+            <Squiggle className='w-16 h-3' />
+            <StarDoodle className='w-3 h-3 text-emerald-400 ml-2' delay='1.2s' />
+          </div>
           <div className='flex items-center justify-between'>
             <Link
               to='/blog'

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
 import MagneticButton from '../components/MagneticButton'
 import AnimatedCounter from '../components/AnimatedCounter'
+import { ScribbleUnderline, StarDoodle } from '../components/Doodle'
 
 export const Route = createFileRoute({
   component: Projects,
@@ -189,10 +190,18 @@ function Projects() {
     <section className='py-8'>
       {/* Header */}
       <ScrollReveal direction='left' delay={0}>
-        <span className='section-prefix mb-2 block'>// projects</span>
+        <span className='section-prefix mb-2 inline-flex items-center gap-1.5'>
+          // projects
+          <StarDoodle className='w-3.5 h-3.5 text-emerald-500' delay='0.7s' />
+        </span>
       </ScrollReveal>
       <ScrollReveal direction='up' delay={100}>
-        <h2 className='text-3xl font-bold text-black dark:text-white mb-2'>Project Portfolio</h2>
+        <h2 className='text-3xl font-bold text-black dark:text-white mb-2'>
+          <span className='relative inline-block'>
+            Project Portfolio
+            <ScribbleUnderline className='absolute -bottom-2 left-0 w-full h-3 text-emerald-500' />
+          </span>
+        </h2>
       </ScrollReveal>
       <ScrollReveal direction='up' delay={200}>
         <p className='text-sm text-zinc-500 dark:text-zinc-400 mb-6'>
@@ -234,7 +243,9 @@ function Projects() {
                 <div className='glass rounded-xl border border-emerald-200 dark:border-emerald-900 glass-card tilt-card overflow-hidden'>
                   {/* Featured badge */}
                   <div className='bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-1.5'>
-                    <span className='text-xs font-mono text-white/90'>★ Featured Project</span>
+                    <span className='text-xs font-mono text-white/90 inline-flex items-center gap-1.5'>
+                      <StarDoodle className='w-3 h-3 text-white' delay='0.9s' /> Featured Project
+                    </span>
                   </div>
 
                   <div className='p-5'>

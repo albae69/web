@@ -2,6 +2,8 @@ import { Link } from '@tanstack/react-router'
 import ScrollReveal from '../components/ScrollReveal'
 import MagneticButton from '../components/MagneticButton'
 import AnimatedCounter from '../components/AnimatedCounter'
+import AvatarOrbit from '../components/AvatarOrbit'
+import { ArrowDoodle, ScribbleUnderline, Squiggle, StarDoodle } from '../components/Doodle'
 
 export const Route = createFileRoute({
   component: Index,
@@ -9,32 +11,38 @@ export const Route = createFileRoute({
 
 function Index() {
   return (
-    <section className='min-h-[70vh] flex flex-col justify-center py-16'>
-      <div className='flex flex-col lg:flex-row items-start lg:items-center gap-12'>
+    <section className='min-h-[60vh] flex flex-col justify-center py-10 sm:py-16 overflow-x-clip'>
+      <div className='flex flex-col-reverse lg:flex-row items-center lg:items-center gap-8 lg:gap-12 text-center lg:text-left'>
         {/* Left content */}
-        <div className='flex-1'>
+        <div className='flex-1 w-full min-w-0 flex flex-col items-center lg:items-start'>
           {/* Decorative prefix */}
           <ScrollReveal direction='left' delay={0}>
-            <span className='section-prefix mb-2'>//</span>
+            <span className='section-prefix mb-2 inline-flex items-center gap-1.5'>
+              //
+              <StarDoodle className='w-3.5 h-3.5 text-emerald-500' delay='0.7s' />
+            </span>
           </ScrollReveal>
 
           {/* Main heading */}
           <ScrollReveal direction='up' delay={100}>
-            <h1 className='text-4xl md:text-5xl font-bold text-black dark:text-white leading-tight'>
-              Ahmad Albaihaqi
+            <h1 className='text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white leading-tight'>
+              <span className='relative inline-block'>
+                Ahmad Albaihaqi
+                <ScribbleUnderline className='absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4 text-emerald-500' />
+              </span>
             </h1>
           </ScrollReveal>
 
           {/* Subtitle */}
           <ScrollReveal direction='up' delay={200}>
-            <p className='text-lg md:text-xl text-zinc-500 dark:text-zinc-400 mt-3 max-w-lg'>
+            <p className='text-base sm:text-lg md:text-xl text-zinc-500 dark:text-zinc-400 mt-3 max-w-lg mx-auto lg:mx-0'>
               Software Engineer. I build web, mobile & cloud apps.
             </p>
           </ScrollReveal>
 
           {/* Tech tags */}
           <ScrollReveal direction='up' delay={250}>
-            <div className='flex flex-wrap gap-2 mt-4'>
+            <div className='flex flex-wrap justify-center lg:justify-start gap-2 mt-4'>
               {['React', 'Flutter', 'Go', 'AWS'].map((tech) => (
                 <span
                   key={tech}
@@ -53,13 +61,14 @@ function Index() {
               <span className='text-xs text-zinc-500 dark:text-zinc-400'>
                 Available for freelance & full-time
               </span>
+              <StarDoodle className='w-3 h-3 text-amber-400' delay='1.4s' />
             </div>
           </ScrollReveal>
 
           {/* Decorative line */}
           <ScrollReveal direction='scale' delay={300}>
-            <div className='flex items-center gap-2 mt-6 text-zinc-300 dark:text-zinc-600'>
-              <span className='font-mono text-xs'>——</span>
+            <div className='flex items-center justify-center lg:justify-start gap-2 mt-6 text-zinc-300 dark:text-zinc-600'>
+              <Squiggle className='w-14 h-3' />
               <span className='w-2 h-2 rounded-full bg-emerald-300 animate-float' />
               <span className='w-2 h-2 rounded-full bg-emerald-300 animate-float delay-1' />
               <span className='w-2 h-2 rounded-full bg-emerald-300 animate-float delay-2' />
@@ -67,20 +76,21 @@ function Index() {
           </ScrollReveal>
 
           {/* CTA Buttons */}
-          <ScrollReveal direction='up' delay={400}>
-            <div className='flex flex-wrap gap-4 mt-8'>
-              <MagneticButton strength={0.2}>
+          <ScrollReveal direction='up' delay={400} className='w-full sm:w-auto'>
+            <div className='relative flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 mt-8 w-full sm:w-auto'>
+              <ArrowDoodle className='hidden lg:block absolute -left-16 -top-3 w-12 h-14 text-emerald-500 -rotate-12' />
+              <MagneticButton strength={0.2} className='w-full sm:w-auto'>
                 <Link
                   to='/projects'
-                  className='px-6 py-3 bg-emerald-600 text-white rounded-xl text-base font-semibold hover:bg-emerald-700 transition-all shadow-md hover:shadow-lg hover:shadow-emerald-200/50 dark:hover:shadow-emerald-900/50 border border-emerald-500 no-underline hover:no-underline hover:text-white'
+                  className='block text-center px-6 py-3.5 sm:py-3 bg-emerald-600 text-white rounded-xl text-base font-semibold hover:bg-emerald-700 transition-all shadow-md hover:shadow-lg hover:shadow-emerald-200/50 dark:hover:shadow-emerald-900/50 border border-emerald-500 no-underline hover:no-underline hover:text-white'
                 >
                   See My Work →
                 </Link>
               </MagneticButton>
-              <MagneticButton strength={0.2}>
+              <MagneticButton strength={0.2} className='w-full sm:w-auto'>
                 <a
                   href='mailto:ahmadalbaihaqi69@gmail.com'
-                  className='px-6 py-3 bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md rounded-xl text-base font-medium text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 hover:border-emerald-300 dark:hover:border-emerald-500 hover:bg-white dark:hover:bg-zinc-700 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all shadow-sm no-underline hover:no-underline'
+                  className='block text-center px-6 py-3.5 sm:py-3 bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md rounded-xl text-base font-medium text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 hover:border-emerald-300 dark:hover:border-emerald-500 hover:bg-white dark:hover:bg-zinc-700 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all shadow-sm no-underline hover:no-underline'
                 >
                   Let's Talk
                 </a>
@@ -90,25 +100,14 @@ function Index() {
         </div>
 
         {/* Right - Profile Avatar */}
-        <ScrollReveal direction='right' delay={300}>
-          <div className='relative'>
-            <div className='w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-xl animate-float'>
-              <img
-                src='/profile.jpeg'
-                alt='Ahmad Albaihaqi'
-                className='w-full h-full object-cover'
-              />
-            </div>
-            {/* Decorative dots */}
-            <div className='absolute -bottom-4 -right-4 w-24 h-24 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl -z-10' />
-            <div className='absolute -top-4 -left-4 w-16 h-16 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl -z-10' />
-          </div>
+        <ScrollReveal direction='right' delay={300} className='shrink-0'>
+          <AvatarOrbit />
         </ScrollReveal>
       </div>
 
       {/* Stats Section */}
       <ScrollReveal direction='up' delay={500}>
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-4 mt-12'>
+        <div className='grid grid-cols-3 gap-3 sm:gap-4 mt-10 sm:mt-12'>
           {[
             { label: 'Projects Shipped', value: 9, suffix: '+' },
             { label: 'Years Experience', value: 6, suffix: '+' },
@@ -116,12 +115,12 @@ function Index() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className='glass dark:bg-zinc-800/50 rounded-xl p-4 text-center border border-black/5 dark:border-white/10'
+              className='glass dark:bg-zinc-800/50 rounded-xl p-3 sm:p-4 text-center border border-black/5 dark:border-white/10'
             >
-              <div className='text-2xl md:text-3xl font-bold text-emerald-500'>
+              <div className='text-xl sm:text-2xl md:text-3xl font-bold text-emerald-500'>
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className='text-xs text-zinc-500 dark:text-zinc-400 mt-1'>
+              <div className='text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-tight'>
                 {stat.label}
               </div>
             </div>

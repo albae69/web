@@ -1,5 +1,6 @@
 import ScrollReveal from '../components/ScrollReveal'
 import AnimatedCounter from '../components/AnimatedCounter'
+import { ScribbleUnderline, StarDoodle } from '../components/Doodle'
 
 export const Route = createFileRoute({
   component: About,
@@ -89,10 +90,18 @@ function About() {
       {/* HEADER */}
       <div>
         <ScrollReveal direction='left' delay={0}>
-          <span className='section-prefix mb-2 block'>// about</span>
+          <span className='section-prefix mb-2 inline-flex items-center gap-1.5'>
+            // about
+            <StarDoodle className='w-3.5 h-3.5 text-emerald-500' delay='0.7s' />
+          </span>
         </ScrollReveal>
         <ScrollReveal direction='up' delay={100}>
-          <h2 className='text-3xl font-bold text-black dark:text-white'>Ahmad Albaihaqi Lubis</h2>
+          <h2 className='text-3xl font-bold text-black dark:text-white'>
+            <span className='relative inline-block'>
+              Ahmad Albaihaqi Lubis
+              <ScribbleUnderline className='absolute -bottom-2 left-0 w-full h-3 text-emerald-500' />
+            </span>
+          </h2>
         </ScrollReveal>
         <ScrollReveal direction='up' delay={200}>
           <p className='text-zinc-500 dark:text-zinc-400 mt-1'>

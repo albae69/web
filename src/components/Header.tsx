@@ -31,7 +31,7 @@ const Header = () => {
         className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-emerald-400 to-emerald-600 transition-all duration-150"
         style={{ width: `${scrollProgress}%` }}
       />
-      <div className="flex items-center justify-between py-4">
+      <div className="flex items-center justify-between py-4 px-5 sm:px-6">
         {/* Logo */}
         <Link
           to="/"
@@ -100,7 +100,7 @@ const Header = () => {
           mobileOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="pt-4 pb-2 border-t border-black/5 flex flex-col gap-1">
+        <nav className="pt-4 pb-2 px-5 sm:px-6 border-t border-black/5 flex flex-col gap-1">
           {links.map((link, index) => {
             const isActive = pathname === link.url
             return (
