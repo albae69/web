@@ -9,56 +9,81 @@ export const Route = createFileRoute({
 const skills = [
   {
     category: 'Frontend Web',
-    items: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3'],
+    items: ['React.js', 'Next.js', 'TypeScript', 'JavaScript ES6+', 'HTML5', 'CSS3', 'Tailwind CSS'],
   },
   {
     category: 'Backend & API',
-    items: ['Go (Fiber)', 'Node.js', 'Express.js', 'Strapi CMS', 'REST API'],
+    items: ['Go (Fiber)', 'Node.js', 'Express.js', 'Strapi CMS', 'REST API', 'Webhooks'],
   },
-  { category: 'Mobile & Desktop', items: ['React Native', 'Flutter'] },
+  {
+    category: 'Mobile & Desktop',
+    items: ['React Native (Android, iOS)', 'Flutter (Android, iOS, Desktop)'],
+  },
   {
     category: 'Database',
-    items: [
-      'PostgreSQL',
-      'MySQL',
-      'SQL Server',
-      'Firebase Firestore',
-      'Supabase',
-      'SQL',
-    ],
+    items: ['PostgreSQL', 'SQL', 'Firebase Firestore'],
   },
   {
     category: 'Cloud & AWS',
     items: ['Amazon S3', 'Amazon ECR', 'AWS AppRunner', 'AWS Textract'],
   },
-  { category: 'Tools', items: ['Git', 'Docker', 'Jira', 'Postman', 'Figma'] },
   {
-    category: 'AI & LLMs',
-    items: ['GitHub Copilot', 'DeepSeek', 'ChatGPT', 'Claude', 'Cursor'],
+    category: 'Tools & Platforms',
+    items: ['Git', 'GitHub', 'GitLab', 'Jira', 'Trello', 'ClickUp', 'Postman', 'Vercel', 'Figma'],
+  },
+  {
+    category: 'Other Expertise',
+    items: [
+      'SEO Optimization',
+      'Payment Gateway Integration',
+      'GPS Tracking',
+      'PDF Processing',
+      'System Integration',
+    ],
   },
 ]
 
 const experiences = [
   {
-    role: 'Fullstack Developer',
-    company: 'Freelance / IT Consulting Vendor',
+    role: 'Fullstack Developer (Contract)',
+    company: 'IT Consulting Vendor — Hospital Information Systems',
     period: 'Aug 2024 — Present',
-    highlight: 'Hospital Information Systems',
+    highlight: 'EMR, BPJS/Insurance claims, AWS',
     points: [
-      'EMR system used by 50+ medical staff across multiple hospitals (Flutter + React + Go)',
-      'Automated BPJS & Insurance claim reports — from 2 days to <2 hours',
+      'EMR system used by 50+ medical staff — Flutter Desktop + Android for real-time entry',
+      'React web app for BPJS & Insurance claim reports — from 2 days to 2 hours',
+      'Go + Fiber REST API handling 1000+ daily transactions, AWS Textract pipeline 95% accuracy, deployed on ECR + AppRunner',
     ],
   },
-
   {
-    role: 'Frontend Developer',
+    role: 'Staff Frontend Developer',
+    company: 'PT. Karya Generasi Biru',
+    period: 'Oct 2023 — May 2024',
+    highlight: 'Next.js migration, SEO',
+    points: [
+      'Migrated WIX to Next.js + Strapi — 40% LCP improvement',
+      'Meta tags, structured data, Open Graph on 20+ pages — 25% organic traffic in 3 months',
+      'Facebook Pixel & Google Ads integration — 15% ad conversion lift',
+    ],
+  },
+  {
+    role: 'Frontend Developer (Part-time Contract)',
     company: 'Shieldtag',
     period: 'Nov 2023 — Jun 2024',
     highlight: 'Landing Page',
     points: [
-      'Migrated WIX to Next.js + Strapi — 40% LCP improvement',
-      'SEO boost: 25% organic traffic increase in 3 months',
-      '90+ Lighthouse score on desktop & mobile',
+      'Company landing page with Next.js + Strapi headless CMS',
+      '90+ Lighthouse score on desktop & mobile via code-splitting and image optimization',
+    ],
+  },
+  {
+    role: 'Mobile Developer',
+    company: 'Coding Collective',
+    period: 'Jul 2023 — Nov 2023',
+    highlight: 'Internal apps, Speaker',
+    points: [
+      'Internal React Native app for project management and attendance — 50+ staff',
+      'Speaker at AMCC x Jogja Coding House and Startup Talk #115 on React Native',
     ],
   },
   {
@@ -67,19 +92,27 @@ const experiences = [
     period: 'Oct 2022 — May 2023',
     highlight: 'Fintech & Healthcare',
     points: [
-      'DEX crypto trading app (React Native) — 500+ active traders',
-      'Web app for Siloam Private Hospital (React.js)',
+      'DEX crypto trading app v2 (React Native) — real-time charts and order books, 500+ traders',
+      'Web app for Siloam Private Hospital (React.js) — App Store and Play Store release with no rejections',
+    ],
+  },
+  {
+    role: 'Mobile Developer (Outsourced via Wiratek Solusi Asia)',
+    company: 'Wiratek Solusi Asia',
+    period: 'Nov 2021 — Aug 2022',
+    highlight: 'E-Commerce & Logistics',
+    points: [
+      'HokBen mobile app — Play Store rating 3.8 -> 4.6, QRIS/VA/E-Wallet integration, +35% monthly transactions',
+      'BUMA Driver Behavior module — GPS + accelerometer analytics for 1,000+ drivers',
     ],
   },
   {
     role: 'Mobile Developer',
-    company: 'PT. Wiratek Solusi Asia',
-    period: 'Nov 2021 — Aug 2022',
-    highlight: 'E-Commerce & Logistics',
+    company: 'PT. Kreasi Alam Teknologi',
+    period: 'Dec 2020 — Sep 2021',
+    highlight: 'Field operations app',
     points: [
-      'Hokben mobile app — Play Store rating 3.8 -> 4.6',
-      'Payment gateway integration — 35% transaction increase',
-      'BUMA Driver Behavior module — 1,000+ active drivers',
+      'SMART PLN mobile app (React Native) — 200+ field technicians, real-time infrastructure monitoring',
     ],
   },
 ]
@@ -118,12 +151,15 @@ function About() {
           </span>
           <p className='text-zinc-600 dark:text-zinc-400 leading-relaxed'>
             <strong className='text-zinc-900 dark:text-zinc-100'>Software Engineer</strong> with{' '}
-            <AnimatedCounter target={6} />+ years of experience in full-stack web, mobile, and desktop
-            development. Worked across{' '}
-            <strong className='text-zinc-900 dark:text-zinc-100'>healthcare</strong> (EMR systems,
+            <AnimatedCounter target={5} />+ years of experience in Frontend, Backend, Mobile, and
+            Cloud development. Skilled in React, Next.js, TypeScript, Go, Node.js, React Native,
+            Flutter, and AWS. Worked across{' '}
+            <strong className='text-zinc-900 dark:text-zinc-100'>healthcare</strong> (EMR,
             BPJS/Insurance claims),{' '}
             <strong className='text-zinc-900 dark:text-zinc-100'>fintech</strong> (crypto trading,
-            payment gateways)
+            payment gateways), and{' '}
+            <strong className='text-zinc-900 dark:text-zinc-100'>logistics</strong> (GPS tracking
+            analytics).
           </p>
         </div>
       </ScrollReveal>
@@ -282,6 +318,12 @@ function About() {
             <div className='space-y-3 mb-5'>
               <div>
                 <p className='text-sm font-medium text-black dark:text-white'>
+                  Bachelor&apos;s Degree in Information Engineering
+                </p>
+                <p className='text-xs text-zinc-500 dark:text-zinc-400'>In Progress</p>
+              </div>
+              <div>
+                <p className='text-sm font-medium text-black dark:text-white'>
                   Pondok Programmer
                 </p>
                 <p className='text-xs text-zinc-500 dark:text-zinc-400'>
@@ -309,7 +351,7 @@ function About() {
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-zinc-700 dark:text-zinc-300'>English</span>
                 <span className='text-xs font-mono text-zinc-400'>
-                  Limited Working
+                  Professional Working
                 </span>
               </div>
             </div>

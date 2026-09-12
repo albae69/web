@@ -1,0 +1,128 @@
+<h1 className='text-black font-bold text-2xl !mb-2'>
+  My Stack for New Projects
+</h1>
+
+<span className='font-mono text-xs text-zinc-400'>
+  11 September 2026 · 6 min read
+</span>
+
+---
+
+People ask me all the time: *"If you were starting a new project today, what would you use?"* This is my answer — the stack I reach for by default, why I chose each piece, and the exact commands to get started.
+
+## The Short Answer
+
+- **Web** — React + Next.js
+- **Mobile** — React Native or Flutter
+- **Backend** — Express (Node) or Go
+- **Runtime** — Bun (drop-in Node replacement)
+- **AI tooling** — GitHub Copilot + DeepSeek Flash v4 via OpenRouter
+- **Routing** — TanStack Router
+
+Everything is TypeScript-first where possible, boring where it matters, and fast to scaffold.
+
+## Web: React + Next.js
+
+For anything that renders in a browser, I default to **React** with **Next.js** on top.
+
+- **React** — the ecosystem is unmatched. Every library, every answer on Stack Overflow, every AI model knows React.
+- **Next.js** — file-based routing, SSR/SSG out of the box, API routes when I don't need a separate backend. One command and I'm shipping.
+
+```bash
+npx create-next-app@latest my-app
+```
+
+For smaller, client-heavy projects (like this portfolio) I'll drop Next.js and use **Vite** instead — faster dev server, less magic:
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+```
+
+```bash
+bun create vite my-app --template react-ts
+```
+
+## Runtime: Bun
+
+**Bun** is my default runtime — a drop-in Node replacement that's dramatically faster:
+
+- **Package manager** — `bun install` is faster than npm or yarn, and it reads `package.json` directly.
+- **Runtime** — runs JS/TS natively, no build step needed for scripts.
+- **Test runner** — `bun test` is built in, zero config.
+
+```bash
+bun init
+bun add express
+bun run dev
+```
+
+One tool for install, run, and test — fewer moving parts.
+
+## Mobile: React Native or Flutter
+
+Two options, depending on the project:
+
+- **React Native** — when I want to share types and logic with a React web app. One codebase, two platforms, same mental model.
+- **Flutter** — when the UI needs to feel truly native and polished. Dart is pleasant, and the widget system is the best in the business.
+
+On this machine I manage Flutter through **FVM** (Flutter Version Management), so the SDK isn't on `PATH` — I call the pinned version directly:
+
+```bash
+/Users/bae/fvm/versions/<version>/bin/flutter create my_app
+/Users/bae/fvm/versions/<version>/bin/flutter run
+```
+
+Check `android/local.properties` → `flutter.sdk` to see which version a project pins.
+
+## Backend: Express or Go
+
+- **Express** — my default for quick APIs, prototypes, and anything that should stay in the JS/TS world. Minimal, well-known, zero surprises.
+
+```bash
+npm init -y
+npm install express
+```
+
+- **Go** — when I need performance, strong typing, or a single static binary. Great for services that will live a long time and need to be fast. The standard library covers most of what I need, so dependencies stay small.
+
+```bash
+go mod init my-service
+go run .
+```
+
+## AI Tooling: GitHub Copilot + DeepSeek Flash v4
+
+Every new project starts with AI assistance wired in:
+
+- **GitHub Copilot** — my daily driver in the editor. Autocomplete, chat, and agent mode for multi-file changes.
+- **DeepSeek Flash v4** — the model I run through **OpenRouter**. Fast, cheap, and good enough for most coding tasks.
+
+```bash
+# OpenRouter gives you one API for many models
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d '{"model": "deepseek/deepseek-chat-v4-flash", "messages": [{"role": "user", "content": "hello"}]}'
+```
+
+One API key, every model — swap models without touching your code.
+
+## Routing: TanStack Router
+
+For client-heavy React apps (like this site), I use **TanStack Router** instead of Next.js routing:
+
+- **Type-safe routes** — links and params are checked at compile time, not runtime.
+- **Auto code-splitting** — each route becomes its own chunk with zero config.
+
+```bash
+npm install @tanstack/react-router
+```
+
+## Why These Choices
+
+1. **TypeScript everywhere** — one language across web, mobile (React Native), and backend (Express). Context switching costs nothing.
+2. **Boring is fast** — every tool above is mainstream. Hiring, debugging, and AI assistance all get easier when you're on the beaten path.
+3. **Right tool per layer** — React for the web, Flutter/RN for mobile, Go when the backend needs to be fast. No one-size-fits-all dogma.
+
+## The Golden Rule
+
+The stack is a starting point, not a contract. If a project needs something different — a database, a queue, a different framework — I swap that one piece and keep the rest. The goal is to spend zero time on setup and all of it on the actual problem.

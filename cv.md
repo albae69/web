@@ -1,114 +1,69 @@
----
-
 # AHMAD ALBAIHAQI LUBIS
-
-**Medan, Sumatera Utara, 20245** | **+62 819 9204 2994**  
-**ahmadalbaihaqi69@gmail.com** | **www.albae69.github.iu**  
-[linkedin.com/in/albae69](https://linkedin.com/in/albae69)
-
----
+Medan, North Sumatra, Indonesia | +62 819 9204 2994
+ahmadalbaihaqi69@gmail.com | https://albae69.github.io | https://linkedin.com/in/albae69 | https://github.com/albae69
 
 ## PROFESSIONAL SUMMARY
-
-Versatile **Software Engineer** with 6+years of experience in full-stack web, mobile, and desktop application development. Proficient in **React/Next.js (Frontend)**, **Go & Node.js (Backend)**, **React Native & Flutter (Mobile)**, and **AWS Cloud Services (ECR, S3, AppRunner, Textract)**. Proven track record in **healthcare tech** (EMR systems, BPJS/Insurance claims automation), **fintech** (crypto trading apps, payment gateway integration), and **logistics** (driver behavior analytics). Consistently delivers measurable impact: improved system efficiency by 80%, increased organic traffic by 25%, and reduced report generation time from 2 days to 2 hours. Currently pursuing a Bachelor's degree in Information Engineering.
-
----
+Software Engineer with 5+ years of experience in Frontend, Backend, Mobile, and Cloud development. Skilled in React, Next.js, TypeScript, Go, Node.js, React Native, Flutter, and AWS (S3, ECR, AppRunner, Textract). Experience in healthcare (EMR, BPJS/Insurance claims automation), fintech (crypto trading, payment gateway), and logistics (GPS tracking analytics). Proven impact on performance optimization, SEO growth, and workflow automation.
 
 ## TECHNICAL SKILLS
-
-| Category              | Technologies                                                                                    |
-| :-------------------- | :---------------------------------------------------------------------------------------------- |
-| **Frontend Web**      | React.js, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS                     |
-| **Backend & API**     | Go (Fiber), Node.js, Express.js, Strapi CMS, REST API, Webhooks                                 |
-| **Mobile & Desktop**  | React Native (Android & iOS), Flutter (Android, iOS, Desktop)                                   |
-| **Database**          | PostgreSQL, Firebase Firestore, SQL                                                             |
-| **Cloud & AWS**       | Amazon S3, Amazon ECR, AWS AppRunner, AWS Textract                                              |
-| **Tools & Platforms** | Git (GitHub/GitLab), Jira, Trello, ClickUp, Postman, Vercel, Figma                              |
-| **Other Expertise**   | SEO Optimization, Payment Gateway Integration, GPS Tracking, PDF Processing, System Integration |
-
----
+Frontend Web: React.js, Next.js, TypeScript, JavaScript ES6+, HTML5, CSS3, Tailwind CSS
+Backend and API: Go (Fiber), Node.js, Express.js, Strapi CMS, REST API, Webhooks
+Mobile and Desktop: React Native (Android, iOS), Flutter (Android, iOS, Desktop)
+Database: PostgreSQL, SQL, Firebase Firestore
+Cloud and AWS: Amazon S3, Amazon ECR, AWS AppRunner, AWS Textract
+Tools and Platforms: Git, GitHub, GitLab, Jira, Trello, ClickUp, Postman, Vercel, Figma
+Other: SEO Optimization, Payment Gateway Integration (QRIS, Virtual Account, E-Wallet), GPS Tracking, PDF Processing, System Integration
 
 ## PROFESSIONAL EXPERIENCE
 
-**Fullstack Developer (Freelance / IT Consulting Vendor)** | **Agustus 2024 – Present**  
-_Specializing in Hospital Information Systems_
+**Fullstack Developer (Contract) - IT Consulting Vendor for Hospital Information Systems** | Aug 2024 - Present
+*Remote*
+- Developed Electronic Medical Record (EMR) system used by 50+ medical staff across multiple hospitals
+- Built Flutter Desktop and Android app for real-time patient data entry
+- Built React web app for BPJS and Insurance claim reports, reducing report processing time from 2 days to 2 hours
+- Developed RESTful API with Go and Fiber handling 1000+ daily transactions
+- Built automated invoice extraction pipeline with AWS Textract with 95% accuracy, reducing manual input by 80%, stored on AWS S3
+- Deployed containerized apps with Amazon ECR and AWS AppRunner
 
-- Led end-to-end development of an **Electronic Medical Record (EMR)** system used by **50+ medical staff** across multiple hospitals, covering:
-  - **Desktop & Android application** built with **Flutter** for real-time patient data entry.
-  - **Web application** with **React** to generate comprehensive BPJS and Insurance claim reports, slashing report processing time from **2 days to under 2 hours**.
-  - **RESTful API** using **Go + Fiber**, handling **1,000+ daily data transactions** with high reliability.
-- Engineered an **automated invoice data extraction pipeline** using **AWS Textract**, achieving **95% data accuracy** and reducing manual input effort by **80%**, with processed documents stored securely on **AWS S3**.
-- Managed containerized application deployment using **Amazon ECR** and **AWS AppRunner** for scalable cloud infrastructure.
+**Staff Frontend Developer - PT. Karya Generasi Biru** | Oct 2023 - May 2024
+*Remote*
+- Migrated legacy WIX website to Next.js with Strapi headless CMS, improving Largest Contentful Paint by 40%
+- Implemented meta tags, structured data, and Open Graph across 20+ pages, increasing organic traffic by 25% in 3 months
+- Integrated Facebook Pixel and Google Ads, increasing ad conversion rate by 15%
+- Collaborated with UI/UX, Backend, and QA teams for responsive design and CMS integration
 
----
+**Frontend Developer (Part-time Contract) - Shieldtag** | Nov 2023 - Jun 2024
+*Remote*
+- Developed company landing page with Next.js and Strapi CMS headless architecture
+- Achieved 90+ Lighthouse score on desktop and mobile via code-splitting and image optimization
 
-**PT. Karya Generasi Biru (Remote)** | **Oktober 2023 – Mei 2024**  
-_Staff Frontend Developer_
+**Mobile Developer - Coding Collective** | Jul 2023 - Nov 2023
+*Onsite, Yogyakarta*
+- Developed internal React Native app for project management and employee attendance for 50+ staff
+- Speaker at AMCC x Jogja Coding House Intermediate Class and ABP x Jogja Coding House Startup Talk 115 on React Native best practices
 
-- Spearheaded the migration of a legacy **WIX-based website to Next.js** with Strapi as headless CMS, improving **Largest Contentful Paint (LCP) by 40%**.
-- Implemented dynamic **meta tags, structured data, and Open Graph** protocols across 20+ pages, boosting **organic search traffic by 25%** within 3 months.
-- Integrated **Facebook Pixel & Google Ads scripts**, increasing conversion rates from ad channels by **15%**.
-- Collaborated with UI/UX, Backend, and QA teams to ensure responsive design and seamless CMS integration.
+**Mobile Developer - PT. Merkle Inovasi Teknologi** | Oct 2022 - May 2023
+*Hybrid, Tangerang Selatan*
+- Developed v2 DEX crypto trading mobile app with React Native with real-time charts and order books for 500+ traders
+- Built web app for Siloam Private Hospital with React.js for hospital data integration
+- Released to Apple App Store and Google Play Store with no rejections
 
----
+**Mobile Developer (Outsourced via Wiratek Solusi Asia for PT. Merkle Inovasi Teknologi) - Wiratek Solusi Asia** | Nov 2021 - Aug 2022
+*Remote*
+- Updated Hobken mobile app (Android, iOS), improving Play Store rating from 3.8 to 4.6
+- Integrated QRIS, Virtual Account, and E-Wallet payment gateways, increasing monthly transactions by 35% with 100+ daily transactions
+- Built Driver Behavior analytics module for BUMA superapp using GPS and accelerometer data for 1000+ drivers
 
-**Shieldtag (Remote)** | **November 2023 – Juni 2024**  
-_Frontend Developer_
-
-- Developed a high-performance **company landing page** using **Next.js** and **Strapi CMS** with a headless architecture.
-- Achieved a **90+ Lighthouse performance score** on both desktop and mobile through aggressive code-splitting and image optimization.
-
----
-
-**Coding Collective (Onsite, Yogyakarta)** | **Juli 2023 – November 2023**  
-_Mobile Developer_
-
-- Developed an internal company **mobile application using React Native** for project management and employee attendance, adopted by **50+ internal staff**.
-- Served as a **guest speaker** at _AMCC x Jogja Coding House - Intermediate Class_ and _ABP x Jogja Coding House - Startup Talk #115_, sharing insights on React Native best practices.
-
----
-
-**PT. Merkle Inovasi Teknologi (Remote Hybrid, Tangerang Selatan)** | **Oktober 2022 – Mei 2023**  
-_Mobile Developer_
-
-- Developed **version 2 of a DEX crypto mobile trading application** using React Native, supporting real-time price charts and order books for **500+ active traders**.
-- Built a **web application for Siloam Private Hospital** using React.js, ensuring secure and accurate data integration with backend hospital systems.
-- Ensured zero-rejection deployment to both **Apple App Store and Google Play Store** through rigorous QA testing.
-
----
-
-**Wiratek Solusi Asia (Remote)** | **November 2021 – Agustus 2022**  
-_Mobile Developer (for PT. Merkle Inovasi Teknologi)_
-
-- Revamped UI/UX and updated the framework for the **Hobken mobile app** (Android & iOS), raising its **Play Store rating from 3.8 to 4.6**.
-- Integrated **multi-method payment gateways** (QRIS, Virtual Account, E-Wallet), boosting monthly transaction volume by **35%** and processing **100+ daily transactions** with 98% success rate.
-- Developed the **Driver Behavior analytics module** for the **BUMA superapps**, leveraging GPS and accelerometer data to monitor driving patterns across **1,000+ active drivers**.
-
----
-
-**PT. Kreasi Alam Teknologi (Remote)** | **Desember 2020 – September 2021**  
-_Mobile Developer_
-
-- Built and deployed the **SMART PLN mobile application** using React Native, adopted by **200+ field technicians** nationwide to monitor electrical infrastructure in real-time.
-- Performed rigorous bug-fixing and ensured 100% flow compliance before each Play Store release.
-
----
+**Mobile Developer - PT. Kreasi Alam Teknologi** | Dec 2020 - Sep 2021
+*Remote*
+- Built and deployed SMART PLN mobile app with React Native for 200+ field technicians for real-time electrical infrastructure monitoring
+- Performed bug fixing and release testing for Google Play Store
 
 ## EDUCATION
-
-**Pondok Programmer** (2019 – 2022)  
-_Bootcamp Programming – Frontend Developer_
-
-- Intensive hands-on training in modern JavaScript, React, and software development lifecycle.
-
-**SMK Negeri 1 Percut Sei Tuan** (2015 – 2018)  
-_Civil Engineering_
-
----
+Bachelor's Degree in Information Engineering - [University Name] - In Progress
+Pondok Programmer (2019 - 2022) - Frontend Developer Bootcamp - Intensive training in JavaScript, React, and software development lifecycle
+SMK Negeri 1 Percut Sei Tuan (2015 - 2018) - Civil Engineering
 
 ## LANGUAGES
-
-- **Bahasa Indonesia:** Native or Bilingual
-- **English:** Limited Working Proficiency
-
----
+Bahasa Indonesia: Native
+English: Professional Working Proficiency

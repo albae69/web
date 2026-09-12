@@ -1,0 +1,122 @@
+<div className="space-y-8">
+
+<h1 className='text-black font-bold text-2xl !mb-2'>
+  Why I Created a Second GitHub Account — And Why I Moved Everything Back
+</h1>
+
+<span className='font-mono text-xs text-zinc-400'>
+  12 Sep 2026 · 6 min read
+</span>
+
+---
+
+For a while I ran **two GitHub accounts**: one main, one separate for work vs. personal. It seemed clean in theory. In practice, it killed my visibility. So I consolidated everything back to [@albae69](https://github.com/albae69). Here's why I split, why I regretted it, and exactly how I moved it all back.
+
+## Why I created a second account
+
+Separation of concerns. I wanted:
+
+- **Work vs. personal:** keep client / office code isolated from side projects and experiments
+- **Clean profile:** keep the main account curated, let the second one be messy
+- **Permission safety:** avoid accidentally pushing private work code to a public personal account, and vice versa
+- **Different identities:** different name, email, SSH key per context
+
+It felt professional. Like having a work laptop and a personal laptop.
+
+## Why it didn't work
+
+1. **Split contribution graph.** My work was invisible on my main profile. Recruiters, collaborators, and anyone checking my GitHub saw a ghost town.
+2. **Portfolio starvation.** My best, most consistent code lived in the other account — private or disconnected from my public identity.
+3. **Maintenance pain.** Two SSH configs, two `git config user.email`, two logins, constant `Permission denied (publickey)`, switching browsers for PR reviews.
+4. **No compounding.** Stars, followers, history — all split in half. Neither profile looked active.
+5. **Work ≠ secret.** 99% of what I wanted to show I *could* show — I just wasn't, because it was in the wrong account.
+
+Lesson: **visibility compounds, fragmentation doesn't.** One active profile beats two half-active ones.
+
+## Why I moved back
+
+- **Single source of truth:** one profile that shows what I actually do
+- **Hiring / freelance credibility:** people check one link. I want that link to be alive.
+- **Simpler workflow:** one SSH key, one email setup with `+work` filtering if needed, one `gh auth login`
+- **Ownership:** even for work repos I can't make public, I can still fork / mirror my learnings, templates, and side extractions to main
+
+I didn't delete separation entirely — I just moved it from *accounts* to *orgs + repos + branches*.
+
+How I separate now:
+- `albae69` = everything public under my name
+- GitHub Orgs = per-client / per-company work
+- Private repos + `work/` branches for WIP
+- `.gitconfig` with `includeIf hasdir:~/work/` for work email
+
+## How I transferred everything back
+
+If you're doing the same, here's the reliable path:
+
+### 1. Option A: Transfer (keeps stars, issues, history)
+
+Best for repos you own on the second account.
+
+1. On second account: Repo → **Settings → General → Danger Zone → Transfer ownership**
+2. Type repo name, enter main username, confirm
+3. Accept transfer email on main account
+4. Update local remote:
+```bash
+git remote -v
+git remote set-url origin git@github.com:albae69/REPO-NAME.git
+git pull && git push
+```
+
+Pros: preserves stars, PRs, issues, watchers.
+Cons: only works repo-by-repo, need admin on both sides.
+
+### 2. Option B: Mirror push (for bulk / clean break)
+
+Best when you have many repos or want to rename.
+
+```bash
+# bare mirror clone from old account
+git clone --mirror git@github-old:OLD-USER/REPO-NAME.git
+cd REPO-NAME.git
+
+# push to new account (create empty repo first on main, no README)
+git remote set-url --push origin git@github.com:albae69/REPO-NAME.git
+git push --mirror
+
+# back to normal clone for daily use
+cd ..
+git clone git@github.com:albae69/REPO-NAME.git
+```
+
+Repeat with a small shell loop for all repos. Verify: branches, tags, `git log --oneline --graph` match.
+
+### 3. Cleanup checklist I ran
+
+- [ ] Transfer / mirror all repos
+- [ ] Move Gists (no auto-transfer — manual copy)
+- [ ] Update README badges, clone URLs, CI secrets
+- [ ] Update Vercel / Netlify / Cloudflare git connections
+- [ ] Update local `~/.ssh/config` — remove `github-old` host, keep one key
+- [ ] Fix global git identity:
+```bash
+git config --global user.name "albae69"
+git config --global user.email "main-email@example.com"
+# work override only under ~/work/
+git config --global includeIf.hasdir:~/work/.path ~/.gitconfig-work
+```
+- [ ] `gh auth login` only on main, `gh auth logout` on old
+- [ ] Redirect notice on old profile README: "Moved to [@albae69](https://github.com/albae69)"
+- [ ] Keep old account for 30 days (to catch CI / webhooks), then archive or delete
+
+## What I'd do differently
+
+Don't create a second *personal* account for work vs. personal. Create an **Organization** instead. You get isolation without losing identity, and you can leave the org without losing your history.
+
+Rule I use now: **one human = one GitHub account. Separation happens with orgs, not accounts.**
+
+---
+
+Moved everything back to [github.com/albae69](https://github.com/albae69). Green squares finally tell the truth.
+
+If you're split across two accounts, consolidate. Future you will thank you.
+
+</div>
