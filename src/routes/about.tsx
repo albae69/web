@@ -1,4 +1,5 @@
 import ScrollReveal from '../components/ScrollReveal'
+import { usePageMeta } from '../hooks/usePageMeta'
 import AnimatedCounter from '../components/AnimatedCounter'
 import { ScribbleUnderline, StarDoodle } from '../components/Doodle'
 
@@ -118,6 +119,11 @@ const experiences = [
 ]
 
 function About() {
+  usePageMeta({
+    title: 'About',
+    description: 'About Ahmad Albaihaqi — Software Engineer with 6+ years across web, mobile, backend and cloud.',
+    path: '/about',
+  })
   return (
     <section className='py-8 space-y-8'>
       {/* HEADER */}

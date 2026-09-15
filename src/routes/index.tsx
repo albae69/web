@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { usePageMeta } from '../hooks/usePageMeta'
 import ScrollReveal from '../components/ScrollReveal'
 import MagneticButton from '../components/MagneticButton'
 import AnimatedCounter from '../components/AnimatedCounter'
@@ -10,6 +11,11 @@ export const Route = createFileRoute({
 })
 
 function Index() {
+  usePageMeta({
+    title: 'Ahmad Albaihaqi | Software Engineer',
+    description: "Hi I'm Ahmad Albaihaqi. I'm a software engineer",
+    path: '/',
+  })
   return (
     <section className='min-h-[60vh] flex flex-col justify-center py-10 sm:py-16 overflow-x-clip'>
       <div className='flex flex-col-reverse lg:flex-row items-center lg:items-center gap-8 lg:gap-12 text-center lg:text-left'>

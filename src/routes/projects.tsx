@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { usePageMeta } from '../hooks/usePageMeta'
 import ScrollReveal from '../components/ScrollReveal'
 import MagneticButton from '../components/MagneticButton'
 import AnimatedCounter from '../components/AnimatedCounter'
@@ -157,6 +158,11 @@ const projects: Project[] = [
 ]
 
 function Projects() {
+  usePageMeta({
+    title: 'Projects',
+    description: 'Project portfolio of Ahmad Albaihaqi — 9+ projects across mobile, web, backend and cloud.',
+    path: '/projects',
+  })
   const [activeCategory, setActiveCategory] = useState<Category>('all')
 
   const filteredProjects = activeCategory === 'all'

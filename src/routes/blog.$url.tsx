@@ -3,6 +3,7 @@ import { useState, useEffect, type ClassAttributes, type HTMLAttributes, type Re
 import type { JSX } from 'react/jsx-runtime'
 import { Highlight, themes } from 'prism-react-renderer'
 import { POSTS, formatDate, getPostComponent } from '../posts'
+import { usePageMeta } from '../hooks/usePageMeta'
 import ScrollReveal from '../components/ScrollReveal'
 import { Squiggle, StarDoodle } from '../components/Doodle'
 import { useTheme } from '../hooks/useTheme'
@@ -121,6 +122,12 @@ function PostContent({ url, components }: { url: string; components: any }) {
 function PostComponent() {
   const { url } = useParams({ from: Route.id })
   const post = POSTS.find(p => p.url === url)
+
+  usePageMeta({
+    title: post?.title ?? 'Blog post',
+    description: post?.description ?? 'Blog post by Ahmad Albaihaqi.',
+    path: `/blog/${url}`,
+  })
 
   return (
     <article className='py-8'>

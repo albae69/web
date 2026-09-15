@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { POSTS, getAllTags, getPostsByTag, formatDate } from '../posts'
+import { usePageMeta } from '../hooks/usePageMeta'
 import ScrollReveal from '../components/ScrollReveal'
 import { ScribbleUnderline, StarDoodle } from '../components/Doodle'
 
@@ -9,6 +10,11 @@ export const Route = createFileRoute({
 })
 
 function Blog() {
+  usePageMeta({
+    title: 'Blog',
+    description: 'Thoughts on tech, coding, and building products by Ahmad Albaihaqi.',
+    path: '/blog',
+  })
   const [activeTag, setActiveTag] = useState('all')
   const allTags = getAllTags()
   const filteredPosts = getPostsByTag(activeTag)
