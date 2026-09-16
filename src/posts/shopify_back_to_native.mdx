@@ -1,0 +1,100 @@
+<div className="space-y-8">
+
+<h1 className='text-black font-bold text-2xl !mb-2'>
+  Shopify Left React Native for Native — And It Makes Sense
+</h1>
+
+<span className='font-mono text-xs text-zinc-400'>
+  September 16, 2026 · 6 min read
+</span>
+
+---
+
+Shopify is going back to native. After going all-in on React Native in 2020, they announced in September 2026 that all their mobile apps are moving back to Swift and Kotlin.
+
+And honestly? I think it's reasonable.
+
+Not because React Native is bad. But because AI agents changed the math that made cross-platform worth it in the first place.
+
+## What Happened
+
+In 2020, Shopify switched from native to React Native for three reasons:
+
+1. Stop building the same features twice
+2. Allow developers to work across the stack
+3. Spend less time chasing parity and more time shipping value
+
+That bet worked. They shipped faster, hired more flexibly, and avoided duplicate work for years. As recently as January 2025, they said the future of React Native was bright.
+
+Then coding agents got dramatically better.
+
+By late 2025, Shopify was prototyping core parts of their biggest apps in Swift and Kotlin using LLMs — and were surprised by how well it worked. Agents could:
+
+- Implement a feature on Android using the iOS version as reference, and vice versa
+- Help developers ramp up and contribute outside their primary stack
+- Keep parity through shared specs, tests, and review checkpoints
+
+As they put it: native still means building twice, but agents now do enough of the implementation, translation, testing, and review work that it's no longer the deciding factor.
+
+## The Proof: Shop in 12 Weeks
+
+The Shop app — top of the shopping category, hundreds of millions of users — was rebuilt greenfield from React Native to SwiftUI and Jetpack Compose.
+
+From proof of concept to a fully native app published in the stores: **just 12 weeks**, assisted by AI.
+
+Results they reported:
+
+- Startup time -23% on iOS, -50% on Android
+- Android release build -109 MB
+- Stability 99.5%+ → 99.95%+ (10x fewer crashes)
+
+Next is the main Shopify app: 300+ screens, home & lockscreen widgets, Apple Watch app, Siri Shortcuts. It's underway and ships later this year.
+
+They chose greenfield over brownfield this time. Previously when moving *to* React Native they did gradual migration. Now, with the React Native version as a perfect reference implementation, LLMs are good enough to rebuild from scratch — clean slate, no old constraints.
+
+## Why I Think It's Reasonable
+
+Cross-platform was always a tradeoff: share implementation, lose closeness to the platform.
+
+You accepted extra layers, framework upgrades, native module pain, and performance tuning — in exchange for not paying the cost of building twice.
+
+AI agents collapse that cost. Translation and boilerplate is exactly what they are best at.
+
+If "write twice" is no longer 2x expensive, why keep paying the cross-platform tax? Native keeps you closer to platform capabilities and first-party tooling, with fewer layers between your code and the OS.
+
+This is the same pattern I wrote about in [The Future of Coding](/posts/future_coding_ai): developers move from writer to reviewer, AI handles implementation. Shopify just applied it at org scale.
+
+| Before AI | After AI Agents |
+|-----------|-----------------|
+| Native = 2x cost | Native = 1.2x cost with agents |
+| RN saves huge time | RN saves less, costs remain |
+| Parity requires discipline | Parity enforced by spec + agents |
+| Platform features lag | Day-one platform access |
+
+## Does This Mean React Native Is Dead?
+
+No. Shopify said it explicitly: React Native was the right choice in 2020, native is the right choice now.
+
+For small teams without native expertise, for MVPs, for apps that are mostly forms and lists — React Native, Flutter, Expo are still excellent.
+
+What *is* dead is the argument that "we must use cross-platform because native is too expensive." That assumption no longer holds when agents can port, test, and review across Swift and Kotlin.
+
+Shopify is also handling the exit responsibly: FlashList gets critical fixes while finding a new home, react-native-skia is sponsored through end of 2026, Restyle will be archived.
+
+## My Takeaway
+
+AI doesn't just make you faster at your current stack. It lets you reconsider decisions you thought were settled.
+
+Shopify didn't hold onto a successful decision just because it was successful. When a core assumption changed, they re-evaluated from first principles.
+
+That's the skill to build in the AI era — which I covered in [How to Stand Out](/posts/standout_ai_era): system thinking over stack loyalty.
+
+Native is back. Powered by AI.
+
+Source: [Native is now the future of mobile at Shopify](https://shopify.engineering/back-to-native) and [Migrating Shop app from React Native to native](https://shopify.engineering/shop-app-migration)
+
+---
+
+What do you think? Is native worth it again, or are you sticking with cross-platform? Drop me an email at ahmadalbaihaqi69@gmail.com or find me on [GitHub](https://github.com/albae69).
+
+</div>
