@@ -50,7 +50,7 @@ function Index() {
               {['React', 'Flutter', 'Go', 'AWS'].map((tech) => (
                 <span
                   key={tech}
-                  className='px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-full text-xs font-mono border border-emerald-200 dark:border-emerald-800'
+                  className='px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-mono border border-emerald-200 dark:border-emerald-800'
                 >
                   {tech}
                 </span>
@@ -86,7 +86,7 @@ function Index() {
               <MagneticButton strength={0.2} className='w-full sm:w-auto'>
                 <Link
                   to='/projects'
-                  className='block text-center px-6 py-3.5 sm:py-3 bg-emerald-600 text-white rounded-xl text-base font-semibold hover:bg-emerald-700 transition-all shadow-md hover:shadow-lg hover:shadow-emerald-200/50 dark:hover:shadow-emerald-900/50 border border-emerald-500 no-underline hover:no-underline hover:text-white'
+                  className='block text-center px-6 py-3.5 sm:py-3 bg-emerald-700 text-white rounded-xl text-base font-semibold hover:bg-emerald-800 transition-all shadow-md hover:shadow-lg hover:shadow-emerald-200/50 dark:hover:shadow-emerald-900/50 border border-emerald-500 no-underline hover:no-underline hover:text-white'
                 >
                   See My Work →
                 </Link>
