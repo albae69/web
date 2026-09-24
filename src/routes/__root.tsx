@@ -1,9 +1,13 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { lazy, Suspense } from 'react'
 import '../index.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
+
+const TanStackRouterDevtools = import.meta.env.DEV
+  ? lazy(() => import('@tanstack/react-router-devtools').then((m) => ({ default: m.TanStackRouterDevtools })))
+  : null
 
 export const Route = createRootRoute({
   component: () => (
@@ -14,7 +18,11 @@ export const Route = createRootRoute({
         <Outlet />
       </main>
       <Footer />
-      <TanStackRouterDevtools />
+      {TanStackRouterDevtools && (
+        <Suspense>
+          <TanStackRouterDevtools />
+        </Suspense>
+      )}
     </>
   ),
 })

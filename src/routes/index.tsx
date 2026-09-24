@@ -3,7 +3,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import ScrollReveal from '../components/ScrollReveal'
 import MagneticButton from '../components/MagneticButton'
 import AnimatedCounter from '../components/AnimatedCounter'
-import AvatarOrbit from '../components/AvatarOrbit'
+import LazyAvatarOrbit from '../components/LazyAvatarOrbit'
 import { ArrowDoodle, ScribbleUnderline, Squiggle, StarDoodle } from '../components/Doodle'
 
 export const Route = createFileRoute({
@@ -30,14 +30,12 @@ function Index() {
           </ScrollReveal>
 
           {/* Main heading */}
-          <ScrollReveal direction='up' delay={100}>
-            <h1 className='text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white leading-tight'>
-              <span className='relative inline-block'>
-                Ahmad Albaihaqi
-                <ScribbleUnderline className='absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4 text-emerald-500' />
-              </span>
-            </h1>
-          </ScrollReveal>
+          <h1 className='text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white leading-tight'>
+            <span className='relative inline-block'>
+              Ahmad Albaihaqi
+              <ScribbleUnderline className='absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4 text-emerald-500' />
+            </span>
+          </h1>
 
           {/* Subtitle */}
           <ScrollReveal direction='up' delay={200}>
@@ -106,9 +104,7 @@ function Index() {
         </div>
 
         {/* Right - Profile Avatar */}
-        <ScrollReveal direction='right' delay={300} className='shrink-0'>
-          <AvatarOrbit />
-        </ScrollReveal>
+        <LazyAvatarOrbit />
       </div>
 
       {/* Stats Section */}
