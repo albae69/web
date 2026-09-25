@@ -12,6 +12,7 @@ import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as NowRouteImport } from './routes/now'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -20,6 +21,11 @@ import { Route as BlogUrlRouteImport } from './routes/blog.$url'
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NowRoute = NowRouteImport.update({
+  id: '/now',
+  path: '/now',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -46,6 +52,7 @@ const BlogUrlRoute = BlogUrlRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
   '/blog/$url': typeof BlogUrlRoute
   '/blog': typeof BlogIndexRoute
@@ -53,6 +60,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
   '/blog/$url': typeof BlogUrlRoute
   '/blog': typeof BlogIndexRoute
@@ -61,21 +69,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
   '/blog/$url': typeof BlogUrlRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/projects' | '/blog/$url' | '/blog'
+  fullPaths: '/' | '/about' | '/now' | '/projects' | '/blog/$url' | '/blog'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/projects' | '/blog/$url' | '/blog'
-  id: '__root__' | '/' | '/about' | '/projects' | '/blog/$url' | '/blog/'
+  to: '/' | '/about' | '/now' | '/projects' | '/blog/$url' | '/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/now'
+    | '/projects'
+    | '/blog/$url'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  NowRoute: typeof NowRoute
   ProjectsRoute: typeof ProjectsRoute
   BlogUrlRoute: typeof BlogUrlRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -95,6 +112,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/now': {
+      id: '/now'
+      path: '/now'
+      fullPath: '/now'
+      preLoaderRoute: typeof NowRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -139,6 +163,15 @@ declare module './routes/about' {
     FileRoutesByPath['/about']['fullPath']
   >
 }
+declare module './routes/now' {
+  const createFileRoute: CreateFileRoute<
+    '/now',
+    FileRoutesByPath['/now']['parentRoute'],
+    FileRoutesByPath['/now']['id'],
+    FileRoutesByPath['/now']['path'],
+    FileRoutesByPath['/now']['fullPath']
+  >
+}
 declare module './routes/projects' {
   const createFileRoute: CreateFileRoute<
     '/projects',
@@ -170,6 +203,7 @@ declare module './routes/blog.index' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  NowRoute: NowRoute,
   ProjectsRoute: ProjectsRoute,
   BlogUrlRoute: BlogUrlRoute,
   BlogIndexRoute: BlogIndexRoute,

@@ -23,6 +23,7 @@ const staticRoutes = [
   { loc: '/about', changefreq: 'monthly', priority: '0.8' },
   { loc: '/projects', changefreq: 'weekly', priority: '0.9' },
   { loc: '/blog', changefreq: 'weekly', priority: '0.9' },
+  { loc: '/now', changefreq: 'weekly', priority: '0.7' },
 ]
 
 const urls = [
