@@ -1,9 +1,5 @@
 import { useState } from 'react'
 import { usePageMeta } from '../hooks/usePageMeta'
-import ScrollReveal from '../components/ScrollReveal'
-import MagneticButton from '../components/MagneticButton'
-import AnimatedCounter from '../components/AnimatedCounter'
-import { ScribbleUnderline, StarDoodle } from '../components/Doodle'
 
 export const Route = createFileRoute({
   component: Projects,
@@ -12,11 +8,11 @@ export const Route = createFileRoute({
 type Category = 'all' | 'mobile' | 'web' | 'backend' | 'cloud'
 
 const categories: { id: Category; label: string }[] = [
-  { id: 'all', label: 'All Projects' },
+  { id: 'all', label: 'All' },
   { id: 'mobile', label: 'Mobile' },
   { id: 'web', label: 'Web' },
   { id: 'backend', label: 'Backend' },
-  { id: 'cloud', label: 'Cloud & AWS' },
+  { id: 'cloud', label: 'Cloud' },
 ]
 
 interface Project {
@@ -25,7 +21,6 @@ interface Project {
   tech: string[]
   points: string[]
   category: Category[]
-  featured: boolean
   metrics: { label: string; value: string | number }[]
 }
 
@@ -35,356 +30,144 @@ const projects: Project[] = [
     url: '#',
     tech: ['Flutter', 'React', 'Go', 'MySQL'],
     points: [
-      'EMR system used by 50+ medical staff across multiple hospitals (Flutter + React + Go)',
-      'Automated BPJS & Insurance claim reports — from 2 days to <2 hours',
+      'EMR for 50+ medical staff across multiple hospitals',
+      'BPJS & Insurance reports — from 2 days to <2 hours',
     ],
     category: ['mobile', 'web', 'backend'],
-    featured: true,
     metrics: [
       { label: 'Users', value: '50+' },
-      { label: 'Daily Transactions', value: '1,000+' },
-      { label: 'Time Saved', value: '95%' },
+      { label: 'Daily Tx', value: '1,000+' },
     ],
   },
   {
     name: 'Auto Invoice Sync — Australian Client',
     url: '#',
-    tech: ['React', 'Go', 'Docker', 'AWS Textract', 'AWS S3', 'AWS AppRunner', 'AWS EC2', 'SQL Server'],
-    points: [
-      'Automated invoice data extraction pipeline for an Australian client',
-      'AWS Textract extraction with 95% accuracy — 80% less manual entry',
-    ],
+    tech: ['React', 'Go', 'Docker', 'AWS Textract', 'S3', 'AppRunner'],
+    points: ['Invoice extraction pipeline — 95% accuracy, 80% less manual entry'],
     category: ['web', 'cloud'],
-    featured: false,
-    metrics: [
-      { label: 'Accuracy', value: '95%' },
-      { label: 'Effort Reduced', value: '80%' },
-    ],
-  },
-  {
-    name: 'WhatsApp Broadcast App',
-    url: '#',
-    tech: ['React', 'Bun'],
-    points: [
-      'WhatsApp broadcast messaging web app with contact management & audience segmentation',
-    ],
-    category: ['web'],
-    featured: false,
-    metrics: [],
+    metrics: [{ label: 'Accuracy', value: '95%' }],
   },
   {
     name: 'Shieldtag — Company Landing Page',
     url: 'https://shieldtag.co',
-    tech: ['Next.js', 'Strapi', 'REST API'],
-    points: [
-      'Migrated WIX to Next.js + Strapi — 40% LCP improvement',
-      'SEO boost: 25% organic traffic increase in 3 months',
-      '90+ Lighthouse score on desktop & mobile',
-    ],
+    tech: ['Next.js', 'Strapi'],
+    points: ['WIX → Next.js — 40% LCP, +25% organic traffic, 90+ Lighthouse'],
     category: ['web'],
-    featured: false,
-    metrics: [
-      { label: 'LCP Improvement', value: '40%' },
-      { label: 'Traffic Increase', value: '25%' },
-      { label: 'Lighthouse Score', value: '90+' },
-    ],
-  },
-  {
-    name: 'DEX Crypto Trading App',
-    url: '#',
-    tech: ['React Native'],
-    points: [
-      'DEX crypto trading app (React Native) — 500+ active traders',
-    ],
-    category: ['mobile'],
-    featured: false,
-    metrics: [
-      { label: 'Active Traders', value: '500+' },
-    ],
-  },
-  {
-    name: 'Siloam Private Hospital — Web App',
-    url: '#',
-    tech: ['React', 'Next.js'],
-    points: [
-      'Web app for Siloam Private Hospital (React.js)',
-    ],
-    category: ['web'],
-    featured: false,
-    metrics: [],
+    metrics: [{ label: 'Lighthouse', value: '90+' }],
   },
   {
     name: 'Hokben Mobile Apps',
     url: 'https://play.google.com/store/apps/details?id=id.co.hokben.revamp&hl=id&pli=1',
     tech: ['React Native'],
-    points: [
-      'Hokben mobile app — Play Store rating 3.8 -> 4.6',
-      'Payment gateway integration — 35% transaction increase',
-    ],
+    points: ['Rating 3.8 → 4.6, +35% transactions via QRIS/VA/E-Wallet'],
     category: ['mobile'],
-    featured: true,
-    metrics: [
-      { label: 'App Rating', value: '4.6' },
-      { label: 'Transaction Boost', value: '35%' },
-      { label: 'Success Rate', value: '98%' },
-    ],
+    metrics: [{ label: 'Rating', value: '4.6' }],
+  },
+  {
+    name: 'DEX Crypto Trading App',
+    url: '#',
+    tech: ['React Native'],
+    points: ['Real-time charts & order books — 500+ traders'],
+    category: ['mobile'],
+    metrics: [{ label: 'Traders', value: '500+' }],
   },
   {
     name: 'BUMA Superapps — Driver Behavior',
     url: '#',
     tech: ['React Native'],
-    points: [
-      'BUMA Driver Behavior module — 1,000+ active drivers',
-    ],
+    points: ['GPS + accelerometer analytics — 1,000+ drivers'],
     category: ['mobile'],
-    featured: false,
-    metrics: [
-      { label: 'Active Drivers', value: '1,000+' },
-    ],
+    metrics: [{ label: 'Drivers', value: '1,000+' }],
   },
   {
     name: 'SMART PLN — Mobile Application',
     url: '#',
     tech: ['React Native'],
-    points: [
-      'SMART PLN mobile app for electrical infrastructure monitoring — 200+ field technicians',
-    ],
+    points: ['Infrastructure monitoring — 200+ technicians'],
     category: ['mobile'],
-    featured: false,
-    metrics: [
-      { label: 'Technicians', value: '200+' },
-    ],
+    metrics: [{ label: 'Technicians', value: '200+' }],
+  },
+  {
+    name: 'WhatsApp Broadcast App',
+    url: '#',
+    tech: ['React', 'Bun'],
+    points: ['Broadcast messaging with contact segmentation'],
+    category: ['web'],
+    metrics: [],
   },
 ]
 
 function Projects() {
   usePageMeta({
     title: 'Projects',
-    description: 'Project portfolio of Ahmad Albaihaqi — 9+ projects across mobile, web, backend and cloud.',
+    description: 'Project portfolio of Ahmad Albaihaqi.',
     path: '/projects',
   })
-  const [activeCategory, setActiveCategory] = useState<Category>('all')
-
-  const filteredProjects = activeCategory === 'all'
-    ? projects
-    : projects.filter(p => p.category.includes(activeCategory))
-
-  const featuredProjects = filteredProjects.filter(p => p.featured)
-  const regularProjects = filteredProjects.filter(p => !p.featured)
+  const [active, setActive] = useState<Category>('all')
+  const filtered = active === 'all' ? projects : projects.filter((p) => p.category.includes(active))
 
   return (
-    <section className='py-8'>
-      {/* Header */}
-      <ScrollReveal direction='left' delay={0}>
-        <span className='section-prefix mb-2 inline-flex items-center gap-1.5'>
-          // projects
-          <StarDoodle className='w-3.5 h-3.5 text-emerald-500' delay='0.7s' />
-        </span>
-      </ScrollReveal>
-      <ScrollReveal direction='up' delay={100}>
-        <h2 className='text-3xl font-bold text-black dark:text-white mb-2'>
-          <span className='relative inline-block'>
-            Project Portfolio
-            <ScribbleUnderline className='absolute -bottom-2 left-0 w-full h-3 text-emerald-500' />
-          </span>
-        </h2>
-      </ScrollReveal>
-      <ScrollReveal direction='up' delay={200}>
-        <p className='text-sm text-zinc-500 dark:text-zinc-400 mb-6'>
-          <AnimatedCounter target={9} />+ projects completed over 6+ years
+    <section style={{ paddingTop: '4rem' }}>
+      <p className='eyebrow'>My Work</p>
+      <h1 className='lead'>
+        Projects <span>shipped over 5+ years.</span>
+      </h1>
+
+      <div className='body-copy' style={{ marginTop: '1.5rem' }}>
+        <p>
+          A selection of work across mobile, web, backend, and cloud — focused on
+          performance, reliability, and measurable impact.
         </p>
-      </ScrollReveal>
+      </div>
 
-      {/* Category Filter */}
-      <ScrollReveal direction='up' delay={300}>
-        <div className='flex flex-wrap gap-2 mb-8'>
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeCategory === cat.id
-                  ? 'bg-emerald-500 text-white shadow-md'
-                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-              }`}
-            >
-              {cat.label}
-              <span className='ml-1.5 text-xs opacity-70'>
-                ({cat.id === 'all' ? projects.length : projects.filter(p => p.category.includes(cat.id)).length})
-              </span>
-            </button>
-          ))}
-        </div>
-      </ScrollReveal>
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', margin: '2rem 0' }}>
+        {categories.map((c) => (
+          <button
+            key={c.id}
+            onClick={() => setActive(c.id)}
+            style={{
+              background: 'transparent',
+              border: 0,
+              padding: '0 0 2px',
+              fontSize: '.95rem',
+              fontWeight: active === c.id ? 700 : 400,
+              color: active === c.id ? '#16150f' : '#6f6a61',
+              borderBottom: active === c.id ? '2px solid #16150f' : '2px solid transparent',
+            }}
+          >
+            {c.label}
+          </button>
+        ))}
+      </div>
 
-      {/* Featured Projects */}
-      {featuredProjects.length > 0 && (
-        <div className='mb-8'>
-          <ScrollReveal direction='up' delay={400}>
-            <h3 className='text-xs font-mono text-emerald-500 mb-4 uppercase tracking-wider'>Featured</h3>
-          </ScrollReveal>
-          <div className='grid gap-5 md:grid-cols-2'>
-            {featuredProjects.map((project, index) => (
-              <ScrollReveal key={project.name} direction='up' delay={Math.min((index + 5) * 100, 600)}>
-                <div className='glass rounded-xl border border-emerald-200 dark:border-emerald-900 glass-card tilt-card overflow-hidden'>
-                  {/* Featured badge */}
-                  <div className='bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-1.5'>
-                    <span className='text-xs font-mono text-white/90 inline-flex items-center gap-1.5'>
-                      <StarDoodle className='w-3 h-3 text-white' delay='0.9s' /> Featured Project
-                    </span>
-                  </div>
-
-                  <div className='p-5'>
-                    {/* Title + Link */}
-                    <div className='flex items-start justify-between mb-3'>
-                      <h3 className='font-bold text-lg text-black dark:text-white'>{project.name}</h3>
-                      {project.url !== '#' && (
-                        <MagneticButton strength={0.3}>
-                          <a
-                            href={project.url}
-                            target='_blank'
-                            rel='noreferrer'
-                            className='text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors'
-                            title='Open link'
-                          >
-                            <svg className='w-5 h-5' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
-                              <path d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6' />
-                              <polyline points='15 3 21 3 21 9' />
-                              <line x1='10' y1='14' x2='21' y2='3' />
-                            </svg>
-                          </a>
-                        </MagneticButton>
-                      )}
-                    </div>
-
-                    {/* Metrics */}
-                    {project.metrics.length > 0 && (
-                      <div className='flex gap-4 mb-4'>
-                        {project.metrics.map((metric) => (
-                          <div key={metric.label} className='text-center'>
-                            <div className='text-xl font-bold text-emerald-500'>{metric.value}</div>
-                            <div className='text-[10px] text-zinc-500 dark:text-zinc-400 uppercase'>{metric.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Tech tags */}
-                    <div className='flex flex-wrap gap-1.5 mb-3'>
-                      {project.tech.map((t) => (
-                        <span
-                          key={t}
-                          className='px-2 py-0.5 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-md text-xs font-mono'
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Points */}
-                    <ul className='space-y-1'>
-                      {project.points.map((point, i) => (
-                        <li key={i} className='text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2'>
-                          <span className='text-emerald-300 dark:text-emerald-500 mt-0.5 shrink-0'>→</span>
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Regular Projects */}
-      {regularProjects.length > 0 && (
-        <div>
-          <ScrollReveal direction='up' delay={500}>
-            <h3 className='text-xs font-mono text-zinc-400 dark:text-zinc-500 mb-4 uppercase tracking-wider'>
-              {featuredProjects.length > 0 ? 'Other Projects' : 'All Projects'}
-            </h3>
-          </ScrollReveal>
-          <div className='grid gap-4 md:grid-cols-2'>
-            {regularProjects.map((project, index) => (
-              <ScrollReveal key={project.name} direction='up' delay={Math.min((index + 6) * 100, 800)}>
-                <div className='glass rounded-xl p-4 border border-black/5 dark:border-white/10 glass-card tilt-card h-full'>
-                  {/* Title + Link */}
-                  <div className='flex items-start justify-between mb-2'>
-                    <h3 className='font-bold text-base text-black dark:text-white'>{project.name}</h3>
-                    {project.url !== '#' && (
-                      <MagneticButton strength={0.3}>
-                        <a
-                          href={project.url}
-                          target='_blank'
-                          rel='noreferrer'
-                          className='text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors'
-                          title='Open link'
-                        >
-                          <svg className='w-4 h-4' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
-                            <path d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6' />
-                            <polyline points='15 3 21 3 21 9' />
-                            <line x1='10' y1='14' x2='21' y2='3' />
-                          </svg>
-                        </a>
-                      </MagneticButton>
-                    )}
-                  </div>
-
-                  {/* Metrics (compact) */}
-                  {project.metrics.length > 0 && (
-                    <div className='flex gap-3 mb-2'>
-                      {project.metrics.slice(0, 2).map((metric) => (
-                        <span key={metric.label} className='text-xs'>
-                          <span className='font-bold text-emerald-500'>{metric.value}</span>
-                          <span className='text-zinc-400 ml-1'>{metric.label}</span>
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Tech tags */}
-                  <div className='flex flex-wrap gap-1 mb-2'>
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className='px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded text-[10px] font-mono'
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Points (limited) */}
-                  <ul className='space-y-0.5'>
-                    {project.points.slice(0, 2).map((point, i) => (
-                      <li key={i} className='text-xs text-zinc-500 dark:text-zinc-400 flex items-start gap-1.5'>
-                        <span className='text-emerald-300 dark:text-emerald-500 mt-0.5 shrink-0'>→</span>
-                        <span className='line-clamp-1'>{point}</span>
-                      </li>
-                    ))}
-                    {project.points.length > 2 && (
-                      <li className='text-[10px] text-zinc-400 dark:text-zinc-500 ml-3'>
-                        +{project.points.length - 2} more
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Empty state */}
-      {filteredProjects.length === 0 && (
-        <ScrollReveal direction='up' delay={400}>
-          <div className='text-center py-12'>
-            <p className='text-zinc-400 dark:text-zinc-500'>No projects in this category.</p>
-          </div>
-        </ScrollReveal>
-      )}
+      <div>
+        {filtered.map((p) => (
+          <article key={p.name} className='row-link' style={{ borderTop: '1px solid #e0dacd' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+              <h3 style={{ fontSize: '1.4rem', margin: 0 }}>{p.name}</h3>
+              {p.url !== '#' && (
+                <a href={p.url} target='_blank' rel='noreferrer' aria-label={`Open ${p.name}`}>
+                  ↗
+                </a>
+              )}
+            </div>
+            {p.metrics.length > 0 && (
+              <p style={{ margin: '.5rem 0', color: '#6f6a61', fontSize: '.95rem' }}>
+                {p.metrics.map((m) => `${m.value} ${m.label}`).join(' · ')}
+              </p>
+            )}
+            <ul style={{ margin: '.5rem 0', paddingLeft: '1.2rem', lineHeight: 1.7 }}>
+              {p.points.map((pt, i) => (
+                <li key={i}>{pt}</li>
+              ))}
+            </ul>
+            <p style={{ margin: '.5rem 0 0', color: '#6f6a61', fontSize: '.9rem' }}>
+              {p.tech.join(' · ')}
+            </p>
+          </article>
+        ))}
+        {filtered.length === 0 && <p>No projects in this category.</p>}
+      </div>
     </section>
   )
 }

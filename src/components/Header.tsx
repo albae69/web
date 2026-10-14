@@ -1,131 +1,229 @@
 import { Link, useRouterState } from '@tanstack/react-router'
-import { useState, useEffect } from 'react'
-import { useScrollProgress } from '../hooks/useScrollProgress'
-import ThemeToggle from './ThemeToggle'
+import { useEffect, useState } from 'react'
 
 const links = [
-  { title: 'Home', url: '/' },
+  { title: 'My Work', url: '/projects' },
   { title: 'About', url: '/about' },
-  { title: 'Projects', url: '/projects' },
-  { title: 'Blog', url: '/blog' },
   { title: 'Now', url: '/now' },
 ] as const
 
-const Header = () => {
-  const [mobileOpen, setMobileOpen] = useState(false)
+const socials = [
+  { label: 'GH', href: 'https://github.com/albae69', aria: 'Ahmad on GitHub' },
+  { label: 'LN', href: 'https://linkedin.com/in/albae69', aria: 'Ahmad on LinkedIn' },
+  { label: 'EM', href: 'mailto:ahmadalbaihaqi69@gmail.com', aria: 'Email Ahmad' },
+] as const
+
+export default function Header() {
+  const [open, setOpen] = useState(false)
   const pathname = useRouterState({ select: (s) => s.location.pathname })
-  const scrollProgress = useScrollProgress()
-  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+    setOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [open ])
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open ])
 
   return (
-    <header className={`sticky top-0 z-50 glass border-b border-black/5 transition-all duration-300 ${scrolled ? 'shadow-sm' : ''}`}>
-      {/* Scroll progress bar */}
-      <div
-        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-emerald-400 to-emerald-600 transition-all duration-150"
-        style={{ width: `${scrollProgress}%` }}
-      />
-      <div className="flex items-center justify-between py-4 px-5 sm:px-6">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="no-underline hover:no-underline hover:text-inherit"
+    <>
+      <header
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
+          background: 'rgba(244,241,235,0.92)',
+          backdropFilter: 'blur(8px)',
+          borderBottom: '1px solid #e0dacd',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '1rem 0',
+          }}
         >
-          <span className="font-mono text-xs text-emerald-500 block leading-none">
-            // albae69
-          </span>
-          <span className="font-sans font-bold text-lg text-black dark:text-white">
-            Ahmad Albaihaqi
-          </span>
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {links.map((link) => {
-            const isActive = pathname === link.url
-            return (
-              <Link
-                key={link.title}
-                to={link.url}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 no-underline ${
-                  isActive
-                    ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 shadow-sm'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800'
-                }`}
-              >
-                {link.title}
-              </Link>
-            )
-          })}
-        </nav>
-
-        {/* Right side - Theme toggle + Mobile toggle */}
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-zinc-600 dark:text-zinc-400"
-            aria-label="Toggle menu"
+          <Link
+            to='/'
+            aria-label='Logo, go to homepage.'
+            style={{ textDecoration: 'none', lineHeight: 1 }}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              {mobileOpen ? (
-                <path
-                  d="M5 5L15 15M15 5L5 15"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              ) : (
-                <path
-                  d="M3 5H17M3 10H17M3 15H17"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              )}
-            </svg>
+            <span
+              style={{
+                fontWeight: 800,
+                fontSize: '1.6rem',
+                letterSpacing: '-0.04em',
+                color: '#16150f',
+              }}
+            >
+              albae<span style={{ color: '#8a8478' }}>.</span>
+            </span>
+          </Link>
+
+          <button
+            type='button'
+            aria-label={open ? 'Close contact menu' : 'Open contact menu'}
+            aria-controls='contact-menu'
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            style={{
+              width: 44,
+              height: 44,
+              display: 'grid',
+              placeItems: 'center',
+              background: 'transparent',
+              border: 0,
+            }}
+          >
+            <span style={{ display: 'block', width: 28, position: 'relative', height: 16 }}>
+              <span
+                style={{
+                  position: 'absolute',
+                  top: open ? 7 : 2,
+                  left: 0,
+                  right: 0,
+                  height: 2,
+                  background: '#16150f',
+                  transform: open ? 'rotate(45deg)' : 'none',
+                  transition: 'transform .25s ease, top .25s ease',
+                }}
+              />
+              <span
+                style={{
+                  position: 'absolute',
+                  top: open ? 7 : 12,
+                  left: 0,
+                  right: 0,
+                  height: 2,
+                  background: '#16150f',
+                  transform: open ? 'rotate(-45deg)' : 'none',
+                  transition: 'transform .25s ease, top .25s ease',
+                }}
+              />
+            </span>
           </button>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile menu with animation */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <nav className="pt-4 pb-2 px-5 sm:px-6 border-t border-black/5 flex flex-col gap-1">
-          {links.map((link, index) => {
-            const isActive = pathname === link.url
-            return (
-              <Link
-                key={link.title}
-                to={link.url}
-                onClick={() => setMobileOpen(false)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all no-underline ${
-                  isActive
-                    ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800'
-                }`}
-                style={{
-                  transitionDelay: mobileOpen ? `${index * 50}ms` : '0ms',
-                }}
-              >
-                {link.title}
-              </Link>
-            )
-          })}
+      {open && (
+        <nav
+          id='contact-menu'
+          aria-label='Contact menu'
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 40,
+            background: '#f4f1eb',
+            padding: '6rem 1.5rem 2rem',
+            overflowY: 'auto',
+          }}
+        >
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 3rem' }}>
+              <li style={{ borderTop: '1px solid #e0dacd' }}>
+                <Link
+                  to='/'
+                  style={{
+                    display: 'block',
+                    padding: '1rem 0',
+                    fontSize: '2rem',
+                    fontWeight: 700,
+                    letterSpacing: '-0.02em',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Home
+                </Link>
+              </li>
+              {links.map((l) => (
+                <li key={l.url} style={{ borderTop: '1px solid #e0dacd' }}>
+                  <Link
+                    to={l.url}
+                    style={{
+                      display: 'block',
+                      padding: '1rem 0',
+                      fontSize: '2rem',
+                      fontWeight: 700,
+                      letterSpacing: '-0.02em',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {l.title}
+                  </Link>
+                </li>
+              ))}
+              <li style={{ borderTop: '1px solid #e0dacd', borderBottom: '1px solid #e0dacd' }}>
+                <Link
+                  to='/resume'
+                  style={{
+                    display: 'block',
+                    padding: '1rem 0',
+                    fontSize: '2rem',
+                    fontWeight: 700,
+                    letterSpacing: '-0.02em',
+                    textDecoration: 'none',
+                  }}
+                >
+                  My Résumé
+                </Link>
+              </li>
+            </ul>
+
+            <div style={{ marginBottom: '2rem' }}>
+              <span style={{ fontSize: '.85rem', color: '#6f6a61' }}>Say Hello</span>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '.5rem 0 0' }}>
+                <li>
+                  <a href='mailto:ahmadalbaihaqi69@gmail.com' style={{ fontSize: '1.15rem' }}>
+                    ahmadalbaihaqi69@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='https://github.com/albae69'
+                    target='_blank'
+                    rel='noreferrer'
+                    style={{ fontSize: '1.15rem' }}
+                  >
+                    github.com/albae69
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <ul
+              style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                gap: '1.25rem',
+              }}
+            >
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} aria-label={s.aria} style={{ fontSize: '.9rem' }}>
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
-      </div>
-    </header>
+      )}
+    </>
   )
 }
-
-export default Header
