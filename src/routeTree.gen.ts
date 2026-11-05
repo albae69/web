@@ -11,12 +11,32 @@
 import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WritingRouteImport } from './routes/writing'
+import { Route as TilRouteImport } from './routes/til'
+import { Route as StackRouteImport } from './routes/stack'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NowRouteImport } from './routes/now'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WritingIndexRouteImport } from './routes/writing.index'
+import { Route as WritingSlugRouteImport } from './routes/writing.$slug'
 
+const WritingRoute = WritingRouteImport.update({
+  id: '/writing',
+  path: '/writing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TilRoute = TilRouteImport.update({
+  id: '/til',
+  path: '/til',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StackRoute = StackRouteImport.update({
+  id: '/stack',
+  path: '/stack',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResumeRoute = ResumeRouteImport.update({
   id: '/resume',
   path: '/resume',
@@ -42,6 +62,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WritingIndexRoute = WritingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WritingRoute,
+} as any)
+const WritingSlugRoute = WritingSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => WritingRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -49,6 +79,11 @@ export interface FileRoutesByFullPath {
   '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
   '/resume': typeof ResumeRoute
+  '/stack': typeof StackRoute
+  '/til': typeof TilRoute
+  '/writing': typeof WritingRouteWithChildren
+  '/writing/$slug': typeof WritingSlugRoute
+  '/writing/': typeof WritingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -56,6 +91,10 @@ export interface FileRoutesByTo {
   '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
   '/resume': typeof ResumeRoute
+  '/stack': typeof StackRoute
+  '/til': typeof TilRoute
+  '/writing/$slug': typeof WritingSlugRoute
+  '/writing': typeof WritingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -64,13 +103,48 @@ export interface FileRoutesById {
   '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
   '/resume': typeof ResumeRoute
+  '/stack': typeof StackRoute
+  '/til': typeof TilRoute
+  '/writing': typeof WritingRouteWithChildren
+  '/writing/$slug': typeof WritingSlugRoute
+  '/writing/': typeof WritingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/now' | '/projects' | '/resume'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/now'
+    | '/projects'
+    | '/resume'
+    | '/stack'
+    | '/til'
+    | '/writing'
+    | '/writing/$slug'
+    | '/writing/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/now' | '/projects' | '/resume'
-  id: '__root__' | '/' | '/about' | '/now' | '/projects' | '/resume'
+  to:
+    | '/'
+    | '/about'
+    | '/now'
+    | '/projects'
+    | '/resume'
+    | '/stack'
+    | '/til'
+    | '/writing/$slug'
+    | '/writing'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/now'
+    | '/projects'
+    | '/resume'
+    | '/stack'
+    | '/til'
+    | '/writing'
+    | '/writing/$slug'
+    | '/writing/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -79,6 +153,9 @@ export interface RootRouteChildren {
   NowRoute: typeof NowRoute
   ProjectsRoute: typeof ProjectsRoute
   ResumeRoute: typeof ResumeRoute
+  StackRoute: typeof StackRoute
+  TilRoute: typeof TilRoute
+  WritingRoute: typeof WritingRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -117,6 +194,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/resume'
       preLoaderRoute: typeof ResumeRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/stack': {
+      id: '/stack'
+      path: '/stack'
+      fullPath: '/stack'
+      preLoaderRoute: typeof StackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/til': {
+      id: '/til'
+      path: '/til'
+      fullPath: '/til'
+      preLoaderRoute: typeof TilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/writing': {
+      id: '/writing'
+      path: '/writing'
+      fullPath: '/writing'
+      preLoaderRoute: typeof WritingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/writing/$slug': {
+      id: '/writing/$slug'
+      path: '/$slug'
+      fullPath: '/writing/$slug'
+      preLoaderRoute: typeof WritingSlugRouteImport
+      parentRoute: typeof WritingRoute
+    }
+    '/writing/': {
+      id: '/writing/'
+      path: '/'
+      fullPath: '/writing/'
+      preLoaderRoute: typeof WritingIndexRouteImport
+      parentRoute: typeof WritingRoute
     }
   }
 }
@@ -166,6 +278,64 @@ declare module './routes/resume' {
     FileRoutesByPath['/resume']['fullPath']
   >
 }
+declare module './routes/stack' {
+  const createFileRoute: CreateFileRoute<
+    '/stack',
+    FileRoutesByPath['/stack']['parentRoute'],
+    FileRoutesByPath['/stack']['id'],
+    FileRoutesByPath['/stack']['path'],
+    FileRoutesByPath['/stack']['fullPath']
+  >
+}
+declare module './routes/til' {
+  const createFileRoute: CreateFileRoute<
+    '/til',
+    FileRoutesByPath['/til']['parentRoute'],
+    FileRoutesByPath['/til']['id'],
+    FileRoutesByPath['/til']['path'],
+    FileRoutesByPath['/til']['fullPath']
+  >
+}
+declare module './routes/writing' {
+  const createFileRoute: CreateFileRoute<
+    '/writing',
+    FileRoutesByPath['/writing']['parentRoute'],
+    FileRoutesByPath['/writing']['id'],
+    FileRoutesByPath['/writing']['path'],
+    FileRoutesByPath['/writing']['fullPath']
+  >
+}
+declare module './routes/writing.$slug' {
+  const createFileRoute: CreateFileRoute<
+    '/writing/$slug',
+    FileRoutesByPath['/writing/$slug']['parentRoute'],
+    FileRoutesByPath['/writing/$slug']['id'],
+    FileRoutesByPath['/writing/$slug']['path'],
+    FileRoutesByPath['/writing/$slug']['fullPath']
+  >
+}
+declare module './routes/writing.index' {
+  const createFileRoute: CreateFileRoute<
+    '/writing/',
+    FileRoutesByPath['/writing/']['parentRoute'],
+    FileRoutesByPath['/writing/']['id'],
+    FileRoutesByPath['/writing/']['path'],
+    FileRoutesByPath['/writing/']['fullPath']
+  >
+}
+
+interface WritingRouteChildren {
+  WritingSlugRoute: typeof WritingSlugRoute
+  WritingIndexRoute: typeof WritingIndexRoute
+}
+
+const WritingRouteChildren: WritingRouteChildren = {
+  WritingSlugRoute: WritingSlugRoute,
+  WritingIndexRoute: WritingIndexRoute,
+}
+
+const WritingRouteWithChildren =
+  WritingRoute._addFileChildren(WritingRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -173,6 +343,9 @@ const rootRouteChildren: RootRouteChildren = {
   NowRoute: NowRoute,
   ProjectsRoute: ProjectsRoute,
   ResumeRoute: ResumeRoute,
+  StackRoute: StackRoute,
+  TilRoute: TilRoute,
+  WritingRoute: WritingRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -14,18 +14,5 @@ export default defineConfig({
     }),
     react(),
     tailwindcss(),
-    {
-      name: 'defer-app-css',
-      apply: 'build',
-      transformIndexHtml: {
-        order: 'post',
-        handler(html) {
-          return html.replace(
-            /<link rel="stylesheet" crossorigin href="([^"]+)">/g,
-            `<link rel="stylesheet" crossorigin href="$1" media="print" onload="this.media='all'">`,
-          )
-        },
-      },
-    },
   ],
 })

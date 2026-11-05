@@ -1,4 +1,4 @@
-// Edit file ini aja kalau mau update device / game.
+// Edit this file to update devices or games.
 
 export type Device = {
   name: string
@@ -10,37 +10,37 @@ export type Device = {
 export const devices: Device[] = [
   {
     name: 'MacBook Pro 14" M4',
-    detail: '16GB RAM / 512GB — daily driver buat coding & build',
+    detail: '16GB RAM / 512GB — daily driver for coding and builds',
     tag: 'Laptop',
     icon: 'laptop',
   },
   {
     name: 'iPhone XR 128GB',
-    detail: 'Daily phone + testing device iOS',
+    detail: 'Daily phone and iOS testing device',
     tag: 'Phone',
     icon: 'phone',
   },
   {
     name: 'Monitor Lenovo L24i-40',
-    detail: '23.8" FHD IPS 100Hz — layar eksternal buat split editor + browser',
+    detail: '23.8" FHD IPS 100Hz — external display for editor and browser',
     tag: 'Monitor',
     icon: 'monitor',
   },
   {
     name: 'Keychron K2 V2',
-    detail: 'Keyboard mechanical wireless, daily driver ngetik & coding',
+    detail: 'Wireless mechanical keyboard, daily driver for typing and coding',
     tag: 'Keyboard',
     icon: 'keyboard',
   },
   {
     name: 'NYK C55 Wireless Silent',
-    detail: 'Mouse wireless silent-click, enak buat kerja malem',
+    detail: 'Wireless silent-click mouse, good for late-night work',
     tag: 'Mouse',
     icon: 'mouse',
   },
   {
     name: 'Huawei Band 10',
-    detail: 'Smartband buat tracking langkah, tidur & notifikasi',
+    detail: 'Smartband for steps, sleep, and notifications',
     tag: 'Wearable',
     icon: 'watch',
   },
@@ -51,7 +51,7 @@ export type Game = {
   platform: string
   status: 'playing' | 'finished' | 'backlog'
   note: string
-  // Link Steam ala Discord rich presence (store page / profil)
+  // Steam link (store page or profile)
   url?: string
   steamAppId?: number
 }
@@ -61,7 +61,7 @@ export const games: Game[] = [
     title: 'Dota 2',
     platform: 'PC / Steam',
     status: 'playing',
-    note: 'Main ranked & unranked bareng teman. Role favorit: Mid / Carry.',
+    note: 'Playing ranked and unranked with friends. Favourite roles: Mid / Carry.',
     url: 'https://store.steampowered.com/app/570/Dota_2/',
     steamAppId: 570,
   },

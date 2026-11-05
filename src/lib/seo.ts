@@ -3,7 +3,7 @@ export const SITE_URL = 'https://albae69.github.io'
 export const SITE_NAME = 'Ahmad Albaihaqi'
 export const SITE_DESCRIPTION =
   "Hi I'm Ahmad Albaihaqi. I'm a software engineer"
-export const OG_IMAGE = `${SITE_URL}/og-image.svg`
+export const OG_IMAGE = `${SITE_URL}/og-image.png`
 
 export type PageMeta = {
   title: string

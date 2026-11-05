@@ -1,192 +1,150 @@
+import Section from '../components/Section'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { pages } from '../lib/pages'
+import { site } from '../data/site'
 
-export const Route = createFileRoute({
-  component: About,
-})
-
-const skills = [
-  {
-    category: 'Frontend Web',
-    items: ['React.js', 'Next.js', 'TypeScript', 'JavaScript ES6+', 'HTML5', 'CSS3', 'Tailwind CSS'],
-  },
-  {
-    category: 'Backend & API',
-    items: ['Go (Fiber)', 'Node.js', 'Express.js', 'Strapi CMS', 'REST API', 'Webhooks'],
-  },
-  {
-    category: 'Mobile & Desktop',
-    items: ['React Native (Android, iOS)', 'Flutter (Android, iOS, Desktop)'],
-  },
-  { category: 'Database', items: ['PostgreSQL', 'SQL', 'Firebase Firestore'] },
-  {
-    category: 'Cloud & AWS',
-    items: ['Amazon S3', 'Amazon ECR', 'AWS AppRunner', 'AWS Textract'],
-  },
-  {
-    category: 'Tools & Platforms',
-    items: ['Git', 'GitHub', 'GitLab', 'Jira', 'Trello', 'ClickUp', 'Postman', 'Vercel', 'Figma'],
-  },
-]
-
-const experiences = [
+const experience = [
   {
     role: 'Fullstack Developer (Contract)',
     company: 'IT Consulting Vendor — Hospital Information Systems',
     period: 'Aug 2024 — Present',
-    points: [
-      'EMR system used by 50+ medical staff — Flutter Desktop + Android for real-time entry',
-      'React web app for BPJS & Insurance claim reports — from 2 days to 2 hours',
-      'Go + Fiber REST API handling 1000+ daily transactions, AWS Textract 95% accuracy',
-    ],
   },
   {
     role: 'Staff Frontend Developer (Contract)',
     company: 'PT. Karya Generasi Biru',
     period: 'Oct 2023 — May 2024',
-    points: [
-      'Migrated WIX to Next.js + Strapi — 40% LCP improvement',
-      'SEO on 20+ pages — 25% organic traffic in 3 months',
-    ],
   },
   {
     role: 'Frontend Developer (Part-time)',
     company: 'Shieldtag',
     period: 'Nov 2023 — Jun 2024',
-    points: ['Next.js + Strapi landing page — 90+ Lighthouse score'],
   },
   {
     role: 'Mobile Developer (Project-based)',
     company: 'Coding Collective',
     period: 'Jul 2023 — Nov 2023',
-    points: ['Internal React Native app for 50+ staff', 'Speaker on React Native best practices'],
   },
   {
     role: 'Mobile Developer (Contract)',
     company: 'PT. Merkle Inovasi Teknologi',
     period: 'Oct 2022 — May 2023',
-    points: [
-      'DEX crypto trading app v2 — 500+ traders',
-      'Web app for Siloam Private Hospital',
-    ],
   },
   {
     role: 'Mobile Developer (via Wiratek Solusi Asia)',
     company: 'Wiratek Solusi Asia',
     period: 'Nov 2021 — Aug 2022',
-    points: [
-      'HokBen app — rating 3.8 → 4.6, +35% transactions via QRIS/VA/E-Wallet',
-      'BUMA Driver Behavior — GPS analytics for 1,000+ drivers',
-    ],
   },
   {
     role: 'Mobile Developer (Contract)',
     company: 'PT. Kreasi Alam Teknologi',
     period: 'Dec 2020 — Sep 2021',
-    points: ['SMART PLN app — 200+ field technicians'],
   },
 ]
 
+const education = [
+  {
+    title: "Bachelor's Degree in Information Engineering",
+    detail: 'In progress',
+  },
+  {
+    title: 'Pondok Programmer',
+    detail: 'Frontend Developer Bootcamp, 2019–2022',
+  },
+  {
+    title: 'SMK Negeri 1 Percut Sei Tuan',
+    detail: 'Civil Engineering, 2015–2018',
+  },
+]
+
+export const Route = createFileRoute({
+  component: About,
+})
+
 function About() {
-  usePageMeta({
-    title: 'About',
-    description: 'About Ahmad Albaihaqi — Software Engineer with 5+ years across web, mobile, backend and cloud.',
-    path: '/about',
-  })
+  usePageMeta(pages.about)
 
   return (
-    <section style={{ paddingTop: '4rem' }}>
-      <p className='eyebrow'>Hey, I&apos;m Bae</p>
-      <h1 className='lead'>
-        Software Engineer <span>based in Medan, Indonesia.</span>
-      </h1>
+    <div className='page'>
+      <header className='page-header'>
+        <h1 className='page-title'>About</h1>
+        <p className='page-subtitle'>Software engineer in {site.location}.</p>
+      </header>
 
-      <div className='body-copy' style={{ marginTop: '2rem' }}>
+      <div className='prose'>
         <p>
-          <strong>Software Engineer</strong> with 5+ years across frontend,
-          backend, mobile, and cloud. I work with React, Next.js, TypeScript,
-          Go, Flutter, and AWS across <strong>healthcare</strong>,{' '}
-          <strong>fintech</strong>, and <strong>logistics</strong>.
+          I&apos;m a software engineer based in {site.location}. For the last 5+
+          years I&apos;ve worked across web, mobile, backend, and cloud — mostly
+          in healthcare, fintech, and logistics.
         </p>
         <p>
-          Highlights: claim reporting 2 days → 2 hours; LCP −40% and +25%
-          organic traffic after a WIX → Next.js migration; Play Store rating
-          3.8 → 4.6.
+          Currently I&apos;m a fullstack developer on hospital information
+          systems: an EMR used by 50+ medical staff, claim-report automation
+          that cut reporting from two days to two hours, and a Go + AWS Textract
+          pipeline handling around 1,000 transactions a day.
+        </p>
+        <p>
+          Previously I did mobile and frontend work: crypto trading apps for
+          500+ traders, HokBen mobile with a 4.6 rating, and GPS analytics for
+          1,000+ drivers. Outside work: Dota 2, mechanical keyboards, and a
+          Steam backlog that keeps growing.
         </p>
       </div>
 
-      <hr className='rule' />
-
-      <h2 style={{ fontSize: '1.6rem', margin: '0 0 1rem' }}>Skills</h2>
-      <div>
-        {skills.map((g) => (
-          <div
-            key={g.category}
-            style={{ padding: '1.2rem 0', borderTop: '1px solid #e0dacd' }}
-          >
-            <h3 style={{ fontSize: '1rem', margin: '0 0 .5rem' }}>{g.category}</h3>
-            <p style={{ margin: 0, color: '#6f6a61' }}>{g.items.join(' · ')}</p>
-          </div>
-        ))}
-      </div>
-
-      <hr className='rule' />
-
-      <h2 style={{ fontSize: '1.6rem', margin: '0 0 1rem' }}>Experience</h2>
-      <div>
-        {experiences.map((exp) => (
-          <article
-            key={exp.role + exp.period}
-            style={{ padding: '1.5rem 0', borderTop: '1px solid #e0dacd' }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-between',
-                gap: '.5rem',
-                marginBottom: '.5rem',
-              }}
-            >
-              <div>
-                <h3 style={{ fontSize: '1.1rem', margin: 0 }}>{exp.role}</h3>
-                <p style={{ margin: '.2rem 0 0', color: '#6f6a61' }}>{exp.company}</p>
-              </div>
-              <span style={{ fontSize: '.9rem', color: '#6f6a61' }}>{exp.period}</span>
+      <Section title='Work'>
+        <div className='work-list'>
+          {experience.map((job) => (
+            <div className='work-item' key={`${job.company}-${job.period}`}>
+              <h3>{job.company}</h3>
+              <p>{job.role}</p>
+              <span className='work-period'>{job.period}</span>
             </div>
-            <ul style={{ margin: '.8rem 0 0', paddingLeft: '1.2rem', lineHeight: 1.7 }}>
-              {exp.points.map((pt, i) => (
-                <li key={i}>{pt}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Section>
 
-      <hr className='rule' />
+      <Section title='Education'>
+        <div className='work-list'>
+          {education.map((item) => (
+            <div className='work-item' key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
 
-      <h2 style={{ fontSize: '1.6rem', margin: '0 0 1rem' }}>Contact</h2>
-      <p>
-        <a href='mailto:ahmadalbaihaqi69@gmail.com'>ahmadalbaihaqi69@gmail.com</a>
-        <br />
-        <a href='https://github.com/albae69' target='_blank' rel='noreferrer'>
-          github.com/albae69
-        </a>
-        <br />
-        <a href='https://linkedin.com/in/albae69' target='_blank' rel='noreferrer'>
-          linkedin.com/in/albae69
-        </a>
-        <br />
-        <span style={{ color: '#6f6a61' }}>Medan, Sumatera Utara</span>
-      </p>
-
-      <h2 style={{ fontSize: '1.6rem', margin: '2.5rem 0 1rem' }}>Education</h2>
-      <p>
-        Bachelor&apos;s Degree in Information Engineering — In Progress
-        <br />
-        Pondok Programmer (2019–2022) — Frontend Developer Bootcamp
-        <br />
-        SMK Negeri 1 Percut Sei Tuan (2015–2018) — Civil Engineering
-      </p>
-    </section>
+      <Section title='Contact'>
+        <ul className='list'>
+          <li>
+            <a className='list-item' href={`mailto:${site.email}`}>
+              <span className='list-title'>Email</span>
+              <span className='list-desc'>{site.email}</span>
+            </a>
+          </li>
+          <li>
+            <a
+              className='list-item'
+              href='https://github.com/albae69'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <span className='list-title'>GitHub</span>
+              <span className='list-desc'>github.com/albae69</span>
+            </a>
+          </li>
+          <li>
+            <a
+              className='list-item'
+              href='https://linkedin.com/in/albae69'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <span className='list-title'>LinkedIn</span>
+              <span className='list-desc'>linkedin.com/in/albae69</span>
+            </a>
+          </li>
+        </ul>
+      </Section>
+    </div>
   )
 }

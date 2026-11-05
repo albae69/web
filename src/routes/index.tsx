@@ -1,82 +1,109 @@
 import { Link } from '@tanstack/react-router'
+import Section from '../components/Section'
+import { GitHubIcon, LinkedInIcon, MailIcon } from '../components/Icons'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { pages } from '../lib/pages'
+import { projects } from '../data/projects'
+import { site } from '../data/site'
+import { posts } from '../data/writing'
+
+const socialIcons = {
+  github: GitHubIcon,
+  linkedin: LinkedInIcon,
+  mail: MailIcon,
+} as const
 
 export const Route = createFileRoute({
   component: Index,
 })
 
+function shortName(name: string) {
+  return name.split(' — ')[0]
+}
+
 function Index() {
-  usePageMeta({
-    title: 'Ahmad Albaihaqi | Software Engineer',
-    description: "Hi I'm Ahmad Albaihaqi. I'm a software engineer",
-    path: '/',
-  })
+  usePageMeta(pages.home)
 
   return (
-    <section style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
-      <p className='eyebrow'>Hey, I&apos;m Bae</p>
-      <h1 className='lead'>
-        A Software Engineer{' '}
-        <span>
-          building reliable web &amp; mobile products for production.
-        </span>
-      </h1>
-
-      <div className='body-copy' style={{ marginTop: '2.5rem' }}>
-        <p>
-          I have 5+ years of experience building web apps, mobile apps, and the
-          APIs + cloud behind them — React/Next.js, Flutter, Go, and AWS — that
-          teams can actually maintain and ship on.
-        </p>
-        <p>
-          Currently I&apos;m a Fullstack Developer on hospital information
-          systems: an EMR used by 50+ medical staff, claim-report automation
-          that cut reporting from 2 days to 2 hours, and a Go + AWS Textract
-          pipeline at around 1,000 transactions/day.
-        </p>
-        <p>
-          Previously I did mobile &amp; frontend across fintech, healthcare, and
-          logistics — crypto trading apps for 500+ traders, HokBen mobile with
-          a 4.6 rating, GPS analytics for 1,000+ drivers.
-        </p>
-        <p style={{ color: '#6f6a61' }}>
-          Outside work: Dota 2, mechanical keyboards, and a Steam backlog that
-          keeps growing.
-        </p>
-
-        <Link
-          to='/projects'
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '.5rem',
-            marginTop: '1rem',
-            fontSize: '1.15rem',
-            fontWeight: 600,
-            textDecoration: 'none',
-            borderBottom: '2px solid #16150f',
-            paddingBottom: '.2rem',
-          }}
-        >
-          See my work
-          <span aria-hidden>↗</span>
-        </Link>
-
-        <div style={{ marginTop: '3rem' }}>
-          <a
-            href='mailto:ahmadalbaihaqi69@gmail.com'
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '.5rem',
-              fontSize: '1.05rem',
-            }}
-          >
-            Contact me
-            <span aria-hidden>↗</span>
-          </a>
-        </div>
+    <div className='page'>
+      <div className='hero'>
+        <img
+          className='avatar'
+          src={site.avatar}
+          alt={site.name}
+          width={60}
+          height={60}
+        />
+        <h1 className='hero-name'>{site.name}</h1>
+        <p className='hero-intro'>{site.intro}</p>
       </div>
-    </section>
+
+      <div className='socials'>
+        {site.socials.map((social) => {
+          const Icon = socialIcons[social.icon]
+          const external = social.href.startsWith('http')
+          return (
+            <a
+              key={social.label}
+              className='social-link'
+              href={social.href}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noreferrer' : undefined}
+              aria-label={social.label}
+            >
+              <Icon />
+            </a>
+          )
+        })}
+      </div>
+
+      <Section title='Writing' href='/writing'>
+        <ul className='list'>
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <Link
+                to='/writing/$slug'
+                params={{ slug: post.slug }}
+                className='list-item'
+              >
+                <span className='list-title'>{post.title}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section title='Projects' href='/projects'>
+        <ul className='list'>
+          {projects.map((project) => {
+            const content = (
+              <>
+                <span className='list-title'>{shortName(project.name)}</span>
+                <span className='list-desc'>{project.points[0]}</span>
+              </>
+            )
+
+            return (
+              <li key={project.name}>
+                {project.url.startsWith('http') ? (
+                  <a
+                    className='list-item'
+                    href={project.url}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <Link to='/projects' className='list-item'>
+                    {content}
+                  </Link>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+      </Section>
+    </div>
   )
 }

@@ -1,4 +1,5 @@
 import { usePageMeta } from '../hooks/usePageMeta'
+import { pages } from '../lib/pages'
 
 export const Route = createFileRoute({
   component: Resume,
@@ -123,19 +124,33 @@ const experience: Job[] = [
 ]
 
 function Resume() {
-  usePageMeta({
-    title: 'Resume',
-    description:
-      'Resume of Ahmad Albaihaqi — Software Engineer with 5+ years across web, mobile, backend and cloud.',
-    path: '/resume',
-  })
+  usePageMeta(pages.resume)
 
   return (
-    <section style={{ paddingTop: '4rem' }}>
+    <div className='page'>
+      <div
+        className='page-header no-print'
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1rem',
+        }}
+      >
+        <h1 className='page-title'>Résumé</h1>
+        <button
+          type='button'
+          className='button'
+          onClick={() => window.print()}
+        >
+          Print / Save PDF
+        </button>
+      </div>
+
       <style>
         {`
           @media print {
-            header, footer, .no-print { display: none !important; }
+            .site-header, .site-footer, .skip-link, .no-print { display: none !important; }
             body { background: #fff !important; max-width: 100% !important; padding: 0 !important; }
             .ats-sheet { box-shadow: none !important; border: 0 !important; margin: 0 !important; max-width: 100% !important; }
           }
@@ -168,7 +183,7 @@ function Resume() {
         style={{
           background: '#ffffff',
           color: '#111111',
-          border: '1px solid #e0dacd',
+          border: '1px solid var(--border)',
           borderRadius: 12,
           padding: 'clamp(1.5rem, 5vw, 3rem)',
           fontFamily: 'Arial, Helvetica, sans-serif',
@@ -309,6 +324,6 @@ function Resume() {
           </ul>
         </section>
       </article>
-    </section>
+    </div>
   )
 }

@@ -7,9 +7,12 @@ import ScrollToTop from '../components/ScrollToTop'
 function RootLayout() {
   return (
     <>
+      <a href='#main' className='skip-link'>
+        Skip to content
+      </a>
       <ScrollToTop />
       <Header />
-      <main id='main'>
+      <main id='main' tabIndex={-1}>
         <Outlet />
       </main>
       <Footer />
